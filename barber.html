@@ -1,12 +1,1073 @@
+Você tem razão — faltou entregar o código. Aqui está o documento completo da página Agenda SHOZZ, pronto para salvar como agenda.html.
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Barber & Gestão Shozz </title>
+
+    <meta
+        name="description"
+        content="Agenda SHOZZ — aplicativo completo para barbearias. Organize horários, clientes, profissionais, serviços e comissões em um só lugar."
+    >
+
+    <meta name="theme-color" content="#f59e0b">
+
+    <title>Agenda SHOZZ | Gestão para Barbearias</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: [
+                            'Inter',
+                            'ui-sans-serif',
+                            'system-ui',
+                            'sans-serif'
+                        ]
+                    },
+                    boxShadow: {
+                        glow: '0 0 60px rgba(245, 158, 11, 0.15)'
+                    }
+                }
+            }
+        };
+    </script>
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    >
 </head>
-<body>
-    <h1>Aplicativo para facilitar a adminstração de sua barbearia</h1>
-    
+
+<body class="bg-slate-50 text-slate-800 dark:bg-slate-950 dark:text-slate-100 font-sans antialiased">
+
+    <!-- =========================================================
+         HEADER
+    ========================================================== -->
+
+    <header
+        class="fixed top-0 left-0 w-full z-50 bg-white/95 dark:bg-slate-950/95 backdrop-blur-xl border-b border-slate-200 dark:border-slate-800"
+    >
+        <div class="max-w-7xl mx-auto px-5 sm:px-6 h-20 flex items-center justify-between">
+
+            <!-- Logo -->
+            <a
+                href="#inicio"
+                class="flex items-center gap-3"
+                aria-label="Agenda SHOZZ"
+            >
+                <div
+                    class="w-10 h-10 rounded-xl bg-amber-500 text-slate-950 flex items-center justify-center shadow-lg"
+                >
+                    <i class="fa-solid fa-calendar-check text-lg"></i>
+                </div>
+
+                <div>
+                    <div class="font-black text-lg tracking-wide text-slate-900 dark:text-white">
+                        AGENDA
+                        <span class="text-amber-500">SHOZZ</span>
+                    </div>
+
+                    <div class="text-[10px] uppercase tracking-widest text-slate-500">
+                        Gestão para barbearias
+                    </div>
+                </div>
+            </a>
+
+
+            <!-- Desktop -->
+            <nav
+                class="hidden md:flex items-center gap-8 text-sm font-semibold"
+                aria-label="Navegação principal"
+            >
+                <a
+                    href="#recursos"
+                    class="hover:text-amber-500 transition"
+                >
+                    Recursos
+                </a>
+
+                <a
+                    href="#beneficios"
+                    class="hover:text-amber-500 transition"
+                >
+                    Benefícios
+                </a>
+
+                <a
+                    href="#sobre"
+                    class="hover:text-amber-500 transition"
+                >
+                    Sobre
+                </a>
+
+                <a
+                    href="#download"
+                    class="bg-amber-500 hover:bg-amber-400 text-slate-950 px-5 py-2.5 rounded-full font-bold transition"
+                >
+                    Baixar aplicativo
+                </a>
+            </nav>
+
+
+            <!-- Mobile -->
+            <button
+                id="menuButton"
+                type="button"
+                aria-label="Abrir menu"
+                aria-expanded="false"
+                class="md:hidden w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-900 flex items-center justify-center"
+            >
+                <i id="menuIcon" class="fa-solid fa-bars"></i>
+            </button>
+
+        </div>
+
+
+        <!-- Mobile menu -->
+        <div
+            id="mobileMenu"
+            class="hidden md:hidden border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950"
+        >
+            <nav class="px-6 py-5 flex flex-col gap-4">
+
+                <a
+                    href="#recursos"
+                    class="mobile-link py-2 font-semibold"
+                >
+                    Recursos
+                </a>
+
+                <a
+                    href="#beneficios"
+                    class="mobile-link py-2 font-semibold"
+                >
+                    Benefícios
+                </a>
+
+                <a
+                    href="#sobre"
+                    class="mobile-link py-2 font-semibold"
+                >
+                    Sobre
+                </a>
+
+                <a
+                    href="#download"
+                    class="mobile-link bg-amber-500 text-slate-950 text-center px-5 py-3 rounded-xl font-bold"
+                >
+                    Baixar aplicativo
+                </a>
+
+            </nav>
+        </div>
+
+    </header>
+
+
+    <main id="inicio">
+
+
+        <!-- =====================================================
+             HERO
+        ====================================================== -->
+
+        <section
+            class="relative min-h-screen flex items-center pt-28 pb-20 overflow-hidden"
+        >
+
+            <!-- Background -->
+            <div
+                class="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(245,158,11,0.15),_transparent_40%),radial-gradient(circle_at_bottom_left,_rgba(245,158,11,0.08),_transparent_35%)]"
+                aria-hidden="true"
+            ></div>
+
+
+            <div class="max-w-7xl mx-auto px-6 w-full relative z-10">
+
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+
+                    <!-- Texto -->
+                    <div>
+
+                        <div
+                            class="inline-flex items-center gap-2 bg-amber-500/10 border border-amber-500/20 text-amber-600 dark:text-amber-400 px-4 py-2 rounded-full text-sm font-bold mb-7"
+                        >
+                            <span class="w-2 h-2 bg-amber-500 rounded-full animate-pulse"></span>
+
+                            Aplicativo para barbearias
+                        </div>
+
+
+                        <h1
+                            class="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.05] text-slate-900 dark:text-white mb-7"
+                        >
+                            Sua barbearia
+                            <span class="text-amber-500">
+                                organizada.
+                            </span>
+                        </h1>
+
+
+                        <p
+                            class="text-lg md:text-xl text-slate-600 dark:text-slate-400 leading-relaxed max-w-xl mb-9"
+                        >
+                            O Agenda SHOZZ ajuda você a controlar horários,
+                            clientes, profissionais, serviços e comissões
+                            em um único aplicativo simples e rápido.
+                        </p>
+
+
+                        <div class="flex flex-col sm:flex-row gap-4">
+
+                            <a
+                                href="#download"
+                                class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-black px-7 py-4 rounded-xl flex items-center justify-center gap-3 shadow-lg shadow-amber-500/20 transition hover:-translate-y-0.5"
+                            >
+                                <i class="fa-solid fa-download"></i>
+                                Baixar Agenda SHOZZ
+                            </a>
+
+
+                            <a
+                                href="#recursos"
+                                class="border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-amber-500 px-7 py-4 rounded-xl font-bold flex items-center justify-center gap-3 transition"
+                            >
+                                <i class="fa-solid fa-circle-play text-amber-500"></i>
+                                Conhecer recursos
+                            </a>
+
+                        </div>
+
+
+                        <!-- Mini benefícios -->
+                        <div class="flex flex-wrap gap-x-6 gap-y-3 mt-9 text-sm text-slate-500">
+
+                            <span class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-amber-500"></i>
+                                Fácil de usar
+                            </span>
+
+                            <span class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-amber-500"></i>
+                                Rápido
+                            </span>
+
+                            <span class="flex items-center gap-2">
+                                <i class="fa-solid fa-check text-amber-500"></i>
+                                Feito para barbearias
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Mockup -->
+                    <div class="relative">
+
+                        <div
+                            class="absolute -inset-10 bg-amber-500/10 blur-3xl rounded-full"
+                            aria-hidden="true"
+                        ></div>
+
+
+                        <div
+                            class="relative bg-slate-900 border border-slate-700 rounded-[2rem] shadow-2xl overflow-hidden max-w-md mx-auto"
+                        >
+
+                            <!-- Top -->
+                            <div class="px-5 py-4 border-b border-slate-800 flex items-center justify-between">
+
+                                <div>
+                                    <div class="text-white font-bold">
+                                        Agenda
+                                    </div>
+
+                                    <div class="text-xs text-slate-500">
+                                        Hoje, 25 de agosto
+                                    </div>
+                                </div>
+
+                                <div
+                                    class="w-9 h-9 rounded-lg bg-amber-500 text-slate-950 flex items-center justify-center"
+                                >
+                                    <i class="fa-solid fa-calendar-day"></i>
+                                </div>
+
+                            </div>
+
+
+                            <!-- Fake calendar -->
+                            <div class="p-5">
+
+                                <div class="grid grid-cols-7 gap-2 text-center text-[10px] text-slate-500 mb-3">
+                                    <span>SEG</span>
+                                    <span>TER</span>
+                                    <span>QUA</span>
+                                    <span>QUI</span>
+                                    <span>SEX</span>
+                                    <span>SÁB</span>
+                                    <span>DOM</span>
+                                </div>
+
+
+                                <div class="grid grid-cols-7 gap-2 mb-6">
+
+                                    <span class="p-2 text-center text-slate-600">24</span>
+
+                                    <span class="p-2 text-center text-white bg-amber-500 rounded-lg font-bold">
+                                        25
+                                    </span>
+
+                                    <span class="p-2 text-center text-slate-300">26</span>
+                                    <span class="p-2 text-center text-slate-300">27</span>
+                                    <span class="p-2 text-center text-slate-300">28</span>
+                                    <span class="p-2 text-center text-slate-300">29</span>
+                                    <span class="p-2 text-center text-slate-300">30</span>
+
+                                </div>
+
+
+                                <!-- Appointments -->
+                                <div class="space-y-3">
+
+                                    <div class="flex gap-3 items-center bg-slate-800 rounded-xl p-3">
+
+                                        <div class="text-xs font-bold text-amber-500 w-12">
+                                            09:00
+                                        </div>
+
+                                        <div class="w-9 h-9 rounded-full bg-blue-500 flex items-center justify-center text-white text-xs">
+                                            JC
+                                        </div>
+
+                                        <div>
+                                            <div class="text-sm text-white font-bold">
+                                                João Carlos
+                                            </div>
+
+                                            <div class="text-xs text-slate-500">
+                                                Corte + Barba
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="flex gap-3 items-center bg-amber-500/10 border border-amber-500/20 rounded-xl p-3">
+
+                                        <div class="text-xs font-bold text-amber-500 w-12">
+                                            10:30
+                                        </div>
+
+                                        <div class="w-9 h-9 rounded-full bg-purple-500 flex items-center justify-center text-white text-xs">
+                                            MS
+                                        </div>
+
+                                        <div>
+                                            <div class="text-sm text-white font-bold">
+                                                Marcos Silva
+                                            </div>
+
+                                            <div class="text-xs text-slate-500">
+                                                Corte masculino
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+
+                                    <div class="flex gap-3 items-center bg-slate-800 rounded-xl p-3">
+
+                                        <div class="text-xs font-bold text-amber-500 w-12">
+                                            13:00
+                                        </div>
+
+                                        <div class="w-9 h-9 rounded-full bg-green-500 flex items-center justify-center text-white text-xs">
+                                            RA
+                                        </div>
+
+                                        <div>
+                                            <div class="text-sm text-white font-bold">
+                                                Rafael Alves
+                                            </div>
+
+                                            <div class="text-xs text-slate-500">
+                                                Barba
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- Bottom -->
+                            <div class="px-5 py-4 border-t border-slate-800 flex justify-between text-xs">
+
+                                <span class="text-slate-500">
+                                    12 atendimentos hoje
+                                </span>
+
+                                <span class="text-amber-500 font-bold">
+                                    R$ 680,00
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             FRASE
+        ====================================================== -->
+
+        <section class="border-y border-slate-200 dark:border-slate-900 bg-white dark:bg-slate-900/40">
+
+            <div class="max-w-5xl mx-auto px-6 py-16 text-center">
+
+                <p class="text-2xl md:text-3xl font-bold text-slate-900 dark:text-white leading-relaxed">
+                    "Menos tempo organizando a agenda.
+                    <span class="text-amber-500">
+                        Mais tempo cuidando dos seus clientes.
+                    </span>"
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             RECURSOS
+        ====================================================== -->
+
+        <section
+            id="recursos"
+            class="py-24"
+        >
+
+            <div class="max-w-7xl mx-auto px-6">
+
+                <div class="max-w-2xl mx-auto text-center mb-16">
+
+                    <span class="text-amber-500 font-bold text-sm uppercase tracking-widest">
+                        Recursos
+                    </span>
+
+                    <h2
+                        class="text-3xl md:text-4xl font-black text-slate-900 dark:text-white mt-3 mb-5"
+                    >
+                        Tudo que sua barbearia precisa
+                    </h2>
+
+                    <p class="text-slate-600 dark:text-slate-400">
+                        Ferramentas pensadas para deixar sua rotina mais
+                        organizada e sua gestão muito mais simples.
+                    </p>
+
+                </div>
+
+
+                <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+
+
+                    <!-- Agenda -->
+                    <article
+                        class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-7 hover:border-amber-500/50 hover:-translate-y-1 transition shadow-sm"
+                    >
+
+                        <div class="w-12 h-12 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center mb-5">
+                            <i class="fa-solid fa-calendar-days text-xl"></i>
+                        </div>
+
+                        <h3 class="text-xl font-bold mb-3">
+                            Agenda inteligente
+                        </h3>
+
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                            Visualize seus horários, organize os atendimentos
+                            e evite confusões na agenda.
+                        </p>
+
+                    </article>
+
+
+                    <!-- Clientes -->
+                    <article
+                        class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-7 hover:border-amber-500/50 hover:-translate-y-1 transition shadow-sm"
+                    >
+
+                        <div class="w-12 h-12 rounded-xl bg-blue-500/10 text-blue-500 flex items-center justify-center mb-5">
+                            <i class="fa-solid fa-users text-xl"></i>
+                        </div>
+
+                        <h3 class="text-xl font-bold mb-3">
+                            Cadastro de clientes
+                        </h3>
+
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                            Tenha os dados dos seus clientes organizados e
+                            acessíveis quando precisar.
+                        </p>
+
+                    </article>
+
+
+                    <!-- Profissionais -->
+                    <article
+                        class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-7 hover:border-amber-500/50 hover:-translate-y-1 transition shadow-sm"
+                    >
+
+                        <div class="w-12 h-12 rounded-xl bg-purple-500/10 text-purple-500 flex items-center justify-center mb-5">
+                            <i class="fa-solid fa-user-tie text-xl"></i>
+                        </div>
+
+                        <h3 class="text-xl font-bold mb-3">
+                            Profissionais
+                        </h3>
+
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                            Organize os profissionais da equipe e acompanhe
+                            seus atendimentos.
+                        </p>
+
+                    </article>
+
+
+                    <!-- Serviços -->
+                    <article
+                        class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-7 hover:border-amber-500/50 hover:-translate-y-1 transition shadow-sm"
+                    >
+
+                        <div class="w-12 h-12 rounded-xl bg-green-500/10 text-green-500 flex items-center justify-center mb-5">
+                            <i class="fa-solid fa-scissors text-xl"></i>
+                        </div>
+
+                        <h3 class="text-xl font-bold mb-3">
+                            Serviços
+                        </h3>
+
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                            Cadastre cortes, barbas, combos e outros serviços
+                            oferecidos pela sua barbearia.
+                        </p>
+
+                    </article>
+
+
+                    <!-- Comissões -->
+                    <article
+                        class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-7 hover:border-amber-500/50 hover:-translate-y-1 transition shadow-sm"
+                    >
+
+                        <div class="w-12 h-12 rounded-xl bg-red-500/10 text-red-500 flex items-center justify-center mb-5">
+                            <i class="fa-solid fa-percent text-xl"></i>
+                        </div>
+
+                        <h3 class="text-xl font-bold mb-3">
+                            Controle de comissões
+                        </h3>
+
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                            Acompanhe as comissões dos profissionais de forma
+                            simples e organizada.
+                        </p>
+
+                    </article>
+
+
+                    <!-- Caixa -->
+                    <article
+                        class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-7 hover:border-amber-500/50 hover:-translate-y-1 transition shadow-sm"
+                    >
+
+                        <div class="w-12 h-12 rounded-xl bg-cyan-500/10 text-cyan-500 flex items-center justify-center mb-5">
+                            <i class="fa-solid fa-cash-register text-xl"></i>
+                        </div>
+
+                        <h3 class="text-xl font-bold mb-3">
+                            Controle financeiro
+                        </h3>
+
+                        <p class="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+                            Acompanhe o movimento da barbearia e tenha mais
+                            controle sobre o caixa.
+                        </p>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             BENEFÍCIOS
+        ====================================================== -->
+
+        <section
+            id="beneficios"
+            class="py-24 bg-slate-900 text-white overflow-hidden relative"
+        >
+
+            <div
+                class="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(245,158,11,0.12),_transparent_45%)]"
+                aria-hidden="true"
+            ></div>
+
+
+            <div class="max-w-7xl mx-auto px-6 relative z-10">
+
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+
+                    <div>
+
+                        <span class="text-amber-500 font-bold text-sm uppercase tracking-widest">
+                            Por que usar?
+                        </span>
+
+                        <h2 class="text-3xl md:text-5xl font-black mt-4 mb-7">
+                            Sua barbearia no controle.
+                        </h2>
+
+                        <p class="text-slate-400 text-lg leading-relaxed mb-9">
+                            O Agenda SHOZZ foi pensado para quem quer uma
+                            ferramenta prática, sem telas complicadas e sem
+                            perder tempo aprendendo sistemas difíceis.
+                        </p>
+
+
+                        <div class="space-y-5">
+
+                            <div class="flex gap-4">
+
+                                <div class="w-10 h-10 shrink-0 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+
+                                <div>
+                                    <h3 class="font-bold mb-1">
+                                        Mais organização
+                                    </h3>
+
+                                    <p class="text-sm text-slate-400">
+                                        Saiba exatamente quem será atendido e
+                                        quando.
+                                    </p>
+                                </div>
+
+                            </div>
+
+
+                            <div class="flex gap-4">
+
+                                <div class="w-10 h-10 shrink-0 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+
+                                <div>
+                                    <h3 class="font-bold mb-1">
+                                        Menos erros
+                                    </h3>
+
+                                    <p class="text-sm text-slate-400">
+                                        Reduza conflitos de horários e
+                                        informações perdidas.
+                                    </p>
+                                </div>
+
+                            </div>
+
+
+                            <div class="flex gap-4">
+
+                                <div class="w-10 h-10 shrink-0 rounded-full bg-amber-500 text-slate-950 flex items-center justify-center">
+                                    <i class="fa-solid fa-check"></i>
+                                </div>
+
+                                <div>
+                                    <h3 class="font-bold mb-1">
+                                        Gestão simples
+                                    </h3>
+
+                                    <p class="text-sm text-slate-400">
+                                        Tudo organizado em uma única solução.
+                                    </p>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Estatísticas -->
+                    <div class="grid grid-cols-2 gap-5">
+
+                        <div class="bg-white/5 border border-white/10 rounded-2xl p-7">
+                            <i class="fa-solid fa-calendar-check text-amber-500 text-2xl mb-5"></i>
+
+                            <div class="text-3xl font-black mb-2">
+                                Agenda
+                            </div>
+
+                            <p class="text-sm text-slate-400">
+                                Seus horários organizados.
+                            </p>
+                        </div>
+
+
+                        <div class="bg-white/5 border border-white/10 rounded-2xl p-7">
+                            <i class="fa-solid fa-users text-amber-500 text-2xl mb-5"></i>
+
+                            <div class="text-3xl font-black mb-2">
+                                Clientes
+                            </div>
+
+                            <p class="text-sm text-slate-400">
+                                Cadastro sempre à mão.
+                            </p>
+                        </div>
+
+
+                        <div class="bg-white/5 border border-white/10 rounded-2xl p-7">
+                            <i class="fa-solid fa-chart-line text-amber-500 text-2xl mb-5"></i>
+
+                            <div class="text-3xl font-black mb-2">
+                                Gestão
+                            </div>
+
+                            <p class="text-sm text-slate-400">
+                                Mais controle do negócio.
+                            </p>
+                        </div>
+
+
+                        <div class="bg-amber-500 text-slate-950 rounded-2xl p-7">
+                            <i class="fa-solid fa-bolt text-2xl mb-5"></i>
+
+                            <div class="text-3xl font-black mb-2">
+                                Rápido
+                            </div>
+
+                            <p class="text-sm text-slate-900/70">
+                                Feito para sua rotina.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             SOBRE
+        ====================================================== -->
+
+        <section
+            id="sobre"
+            class="py-24"
+        >
+
+            <div class="max-w-4xl mx-auto px-6 text-center">
+
+                <div
+                    class="w-16 h-16 bg-amber-500/10 text-amber-500 rounded-2xl flex items-center justify-center mx-auto mb-6"
+                >
+                    <i class="fa-solid fa-scissors text-2xl"></i>
+                </div>
+
+                <h2 class="text-3xl md:text-4xl font-black mb-6">
+                    Feito pensando na rotina da barbearia
+                </h2>
+
+                <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+                    O Agenda SHOZZ faz parte da família de sistemas da SHOZZ.
+                    Nossa proposta é simples: criar tecnologia útil, rápida e
+                    fácil de entender, para que o dono da barbearia possa
+                    cuidar do negócio sem precisar ser especialista em
+                    tecnologia.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             DOWNLOAD
+        ====================================================== -->
+
+        <section
+            id="download"
+            class="py-24 bg-amber-500"
+        >
+
+            <div class="max-w-4xl mx-auto px-6 text-center">
+
+                <div
+                    class="w-16 h-16 bg-slate-950 text-amber-500 rounded-2xl flex items-center justify-center mx-auto mb-7"
+                >
+                    <i class="fa-solid fa-download text-2xl"></i>
+                </div>
+
+
+                <h2
+                    class="text-4xl md:text-5xl font-black text-slate-950 mb-5"
+                >
+                    Pronto para organizar sua barbearia?
+                </h2>
+
+
+                <p class="text-slate-900/75 text-lg max-w-2xl mx-auto mb-9">
+                    Conheça o Agenda SHOZZ e leve uma gestão mais simples
+                    para o seu negócio.
+                </p>
+
+
+                <!-- IMPORTANTE:
+                     Troque o href pelo arquivo/página real de download.
+                -->
+                <a
+                    href="downloads/agenda-shozz.exe"
+                    download
+                    class="inline-flex items-center justify-center gap-3 bg-slate-950 hover:bg-slate-800 text-white font-black px-8 py-4 rounded-xl transition shadow-xl"
+                >
+                    <i class="fa-solid fa-download"></i>
+                    Baixar Agenda SHOZZ
+                </a>
+
+
+                <p class="text-sm text-slate-900/60 mt-5">
+                    Versão para Windows
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================================
+             CONTATO
+        ====================================================== -->
+
+        <section class="py-20">
+
+            <div class="max-w-5xl mx-auto px-6">
+
+                <div
+                    class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 md:p-12 text-center shadow-sm"
+                >
+
+                    <span class="text-amber-500 font-bold text-sm uppercase tracking-widest">
+                        Precisa de ajuda?
+                    </span>
+
+                    <h2 class="text-3xl font-black mt-3 mb-4">
+                        Fale com a SHOZZ
+                    </h2>
+
+                    <p class="text-slate-600 dark:text-slate-400 max-w-xl mx-auto mb-8">
+                        Entre em contato para tirar dúvidas sobre o Agenda
+                        SHOZZ, instalação ou utilização do aplicativo.
+                    </p>
+
+
+                    <div class="flex flex-col sm:flex-row justify-center gap-4">
+
+                        <a
+                            href="https://wa.me/5564992636299"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold px-7 py-4 rounded-xl flex items-center justify-center gap-3 transition"
+                        >
+                            <i class="fa-brands fa-whatsapp text-xl"></i>
+                            WhatsApp
+                        </a>
+
+
+                        <a
+                            href="mailto:contato@shozz.com.br"
+                            class="bg-slate-100 dark:bg-slate-800 hover:border-amber-500 border border-transparent font-bold px-7 py-4 rounded-xl flex items-center justify-center gap-3 transition"
+                        >
+                            <i class="fa-solid fa-envelope text-amber-500"></i>
+                            E-mail
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================== -->
+
+    <footer
+        class="border-t border-slate-200 dark:border-slate-900 py-10 bg-white dark:bg-slate-950"
+    >
+
+        <div class="max-w-7xl mx-auto px-6">
+
+            <div class="flex flex-col md:flex-row items-center justify-between gap-5">
+
+                <div>
+
+                    <div class="font-black text-xl">
+                        AGENDA
+                        <span class="text-amber-500">
+                            SHOZZ
+                        </span>
+                    </div>
+
+                    <p class="text-sm text-slate-500 mt-1">
+                        Gestão simples para sua barbearia.
+                    </p>
+
+                </div>
+
+
+                <div class="text-sm text-slate-500">
+                    © <span id="year"></span> SHOZZ Sistemas.
+                    Todos os direitos reservados.
+                </div>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================== -->
+
+    <script>
+
+        document.addEventListener('DOMContentLoaded', () => {
+
+            /* Ano */
+            document.getElementById('year').textContent =
+                new Date().getFullYear();
+
+
+            /* Menu mobile */
+
+            const menuButton =
+                document.getElementById('menuButton');
+
+            const mobileMenu =
+                document.getElementById('mobileMenu');
+
+            const menuIcon =
+                document.getElementById('menuIcon');
+
+
+            function closeMenu() {
+
+                mobileMenu.classList.add('hidden');
+
+                menuButton.setAttribute(
+                    'aria-expanded',
+                    'false'
+                );
+
+                menuButton.setAttribute(
+                    'aria-label',
+                    'Abrir menu'
+                );
+
+                menuIcon.className =
+                    'fa-solid fa-bars';
+            }
+
+
+            menuButton.addEventListener('click', () => {
+
+                const open =
+                    !mobileMenu.classList.contains('hidden');
+
+                if (open) {
+
+                    closeMenu();
+
+                } else {
+
+                    mobileMenu.classList.remove('hidden');
+
+                    menuButton.setAttribute(
+                        'aria-expanded',
+                        'true'
+                    );
+
+                    menuButton.setAttribute(
+                        'aria-label',
+                        'Fechar menu'
+                    );
+
+                    menuIcon.className =
+                        'fa-solid fa-xmark';
+                }
+
+            });
+
+
+            document
+                .querySelectorAll('.mobile-link')
+                .forEach(link => {
+
+                    link.addEventListener(
+                        'click',
+                        closeMenu
+                    );
+
+                });
+
+
+            window.addEventListener('resize', () => {
+
+                if (window.innerWidth >= 768) {
+                    closeMenu();
+                }
+
+            });
+
+        });
+
+    </script>
+
 </body>
 </html>
