@@ -1,11 +1,1299 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> AlertaCerto Shozz</title>
+
+    <title>AlertaCerto Shozz</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            color: #1d2520;
+            background: #ffffff;
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1150px;
+            margin: auto;
+        }
+
+        /* =========================
+           CABEÇALHO
+        ========================= */
+
+        header {
+            background: #ffffff;
+            border-bottom: 1px solid #dce8d9;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            min-height: 75px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 25px;
+            font-weight: bold;
+            color: #1d2520;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            background: #e8f4e6;
+            color: #216b38;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #216b38;
+        }
+
+        .menu {
+            display: flex;
+            align-items: center;
+            gap: 28px;
+        }
+
+        .menu a {
+            color: #465148;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .menu a:hover {
+            color: #216b38;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 13px 20px;
+            border-radius: 9px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-green {
+            background: #216b38;
+            color: white;
+        }
+
+        .btn-green:hover {
+            background: #154d27;
+            transform: translateY(-2px);
+        }
+
+        .btn-white {
+            background: white;
+            color: #216b38;
+        }
+
+        .btn-outline {
+            background: white;
+            border: 1px solid #216b38;
+            color: #216b38;
+        }
+
+        .btn-outline:hover {
+            background: #edf6eb;
+        }
+
+        /* =========================
+           HERO
+        ========================= */
+
+        .hero {
+            background:
+                radial-gradient(
+                    circle at 85% 20%,
+                    #dcebd8 0,
+                    transparent 30%
+                ),
+                linear-gradient(
+                    135deg,
+                    #f8fbf7,
+                    #edf6ea
+                );
+
+            padding: 80px 0;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .tag {
+            display: inline-block;
+            background: white;
+            border: 1px solid #d5e3d2;
+            color: #216b38;
+            padding: 7px 13px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 58px;
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 22px;
+        }
+
+        .hero h1 span {
+            color: #216b38;
+        }
+
+        .hero p {
+            color: #68736c;
+            font-size: 18px;
+            max-width: 620px;
+            margin-bottom: 30px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .small-text {
+            margin-top: 15px;
+            color: #748077;
+            font-size: 13px;
+        }
+
+        /* =========================
+           PAINEL
+        ========================= */
+
+        .dashboard {
+            background: white;
+            border: 1px solid #d8e4d5;
+            border-radius: 22px;
+            padding: 20px;
+            box-shadow: 0 18px 45px rgba(28, 67, 39, 0.12);
+        }
+
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px;
+        }
+
+        .dashboard-title {
+            font-size: 18px;
+            font-weight: bold;
+            color: #124a27;
+        }
+
+        .online {
+            background: #e8f5e8;
+            color: #216b38;
+            padding: 5px 9px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: bold;
+        }
+
+        .dashboard-card {
+            background: #f5f9f3;
+            border: 1px solid #e0ebdd;
+            border-radius: 13px;
+            padding: 15px;
+            margin-bottom: 12px;
+        }
+
+        .dashboard-card small {
+            color: #6d786f;
+        }
+
+        .number {
+            font-size: 28px;
+            color: #216b38;
+            font-weight: bold;
+        }
+
+        .progress {
+            width: 100%;
+            height: 8px;
+            background: #dce8d9;
+            border-radius: 20px;
+            margin-top: 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 72%;
+            background: #216b38;
+        }
+
+        .dashboard-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* =========================
+           SEÇÕES
+        ========================= */
+
+        section {
+            padding: 75px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            max-width: 700px;
+            margin: auto;
+            margin-bottom: 45px;
+        }
+
+        .section-title span {
+            color: #216b38;
+            font-size: 12px;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            margin: 10px 0;
+        }
+
+        .section-title p {
+            color: #68736c;
+        }
+
+        /* =========================
+           CARDS
+        ========================= */
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .card {
+            border: 1px solid #d8e4d5;
+            border-radius: 16px;
+            padding: 27px;
+            background: white;
+            transition: 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 15px 35px rgba(28, 67, 39, 0.10);
+        }
+
+        .card-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: #e8f4e6;
+            color: #216b38;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            margin-bottom: 16px;
+        }
+
+        .card h3 {
+            margin-bottom: 8px;
+            font-size: 18px;
+        }
+
+        .card p {
+            color: #68736c;
+            font-size: 14px;
+        }
+
+        /* =========================
+           DOWNLOAD
+        ========================= */
+
+        .download {
+            background: #124a27;
+            color: white;
+        }
+
+        .download-content {
+            display: grid;
+            grid-template-columns: 1fr 0.8fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .download h2 {
+            font-size: 40px;
+            line-height: 1.15;
+            margin-bottom: 15px;
+        }
+
+        .download p {
+            color: #d8e8db;
+            margin-bottom: 25px;
+        }
+
+        .download .btn-green {
+            background: white;
+            color: #124a27;
+        }
+
+        .download .btn-outline {
+            border-color: #b9d2bd;
+            background: transparent;
+            color: white;
+        }
+
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 14px;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.07);
+        }
+
+        .step-number {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: white;
+            color: #216b38;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* =========================
+           COMO FUNCIONA
+        ========================= */
+
+        .how {
+            background: #f5f9f3;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+        }
+
+        .step-card {
+            background: white;
+            border: 1px solid #d8e4d5;
+            border-radius: 15px;
+            padding: 23px;
+        }
+
+        .step-card span {
+            color: #216b38;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .step-card h3 {
+            margin: 10px 0 6px;
+        }
+
+        .step-card p {
+            color: #68736c;
+            font-size: 13px;
+        }
+
+        /* =========================
+           LOGIN
+        ========================= */
+
+        .login {
+            max-width: 580px;
+            margin: auto;
+            border: 1px solid #d8e4d5;
+            border-radius: 20px;
+            padding: 35px;
+            box-shadow: 0 18px 45px rgba(28, 67, 39, 0.10);
+        }
+
+        .login h2 {
+            margin-bottom: 8px;
+        }
+
+        .login > p {
+            color: #68736c;
+            margin-bottom: 25px;
+        }
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: bold;
+            margin-bottom: 6px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 13px;
+            border: 1px solid #ccd8cb;
+            border-radius: 9px;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .form-group input:focus {
+            border-color: #216b38;
+            box-shadow: 0 0 0 3px #e4f1e2;
+        }
+
+        .login-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .forgot {
+            color: #216b38;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        /* =========================
+           RODAPÉ
+        ========================= */
+
+        footer {
+            background: #0d2415;
+            color: white;
+            padding: 35px 0;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .footer-text {
+            color: #9eb0a2;
+            font-size: 13px;
+        }
+
+        /* =========================
+           RESPONSIVO
+        ========================= */
+
+        @media (max-width: 850px) {
+
+            .menu {
+                display: none;
+            }
+
+            .hero-content,
+            .download-content {
+                grid-template-columns: 1fr;
+            }
+
+            .cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .steps-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero h1 {
+                font-size: 46px;
+            }
+        }
+
+        @media (max-width: 560px) {
+
+            .hero {
+                padding: 55px 0;
+            }
+
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .cards,
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .download h2 {
+                font-size: 30px;
+            }
+
+            .section-title h2 {
+                font-size: 30px;
+            }
+
+            .login {
+                padding: 25px;
+            }
+
+            .login-bottom {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
 </head>
+
 <body>
-    
+
+    <!-- =========================
+         CABEÇALHO
+    ========================== -->
+
+    <header>
+
+        <div class="container">
+
+            <nav>
+
+                <a href="#" class="logo">
+
+                    <div class="logo-icon">
+                        ✚
+                    </div>
+
+                    Alerta<span>Certo</span>
+
+                </a>
+
+                <div class="menu">
+
+                    <a href="#recursos">
+                        Recursos
+                    </a>
+
+                    <a href="#como-funciona">
+                        Como funciona
+                    </a>
+
+                    <a href="#download">
+                        Download
+                    </a>
+
+                    <a href="#acesso">
+                        Acesso
+                    </a>
+
+                </div>
+
+                <a href="#download" class="btn btn-green">
+                    Baixar aplicativo
+                </a>
+
+            </nav>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================
+         PARTE PRINCIPAL
+    ========================== -->
+
+    <main>
+
+        <section class="hero">
+
+            <div class="container hero-content">
+
+                <div>
+
+                    <div class="tag">
+                        ✓ Plataforma para farmácias
+                    </div>
+
+                    <h1>
+                        Gestão inteligente para sua
+                        <span>farmácia.</span>
+                    </h1>
+
+                    <p>
+                        Gerencie clientes, medicamentos e dispositivos
+                        FarmaBox em um único lugar. Simplifique a
+                        configuração e acompanhe os tratamentos com
+                        mais organização e segurança.
+                    </p>
+
+                    <div class="buttons">
+
+                        <a href="#download" class="btn btn-green">
+                            ⬇ Baixar aplicativo
+                        </a>
+
+                        <a href="#acesso" class="btn btn-outline">
+                            Acessar sistema
+                        </a>
+
+                    </div>
+
+                    <div class="small-text">
+                        Aplicativo destinado às farmácias parceiras.
+                    </div>
+
+                </div>
+
+
+                <!-- PAINEL DE EXEMPLO -->
+
+                <div class="dashboard">
+
+                    <div class="dashboard-header">
+
+                        <div class="dashboard-title">
+                            Painel da Farmácia
+                        </div>
+
+                        <div class="online">
+                            ● Sistema ativo
+                        </div>
+
+                    </div>
+
+
+                    <div class="dashboard-card">
+
+                        <small>
+                            Clientes cadastrados
+                        </small>
+
+                        <div class="number">
+                            128
+                        </div>
+
+                    </div>
+
+
+                    <div class="dashboard-card">
+
+                        <small>
+                            FarmaBoxes ativas
+                        </small>
+
+                        <div class="number">
+                            96
+                        </div>
+
+                    </div>
+
+
+                    <div class="dashboard-card">
+
+                        <strong>
+                            Controle de estoque
+                        </strong>
+
+                        <div class="progress">
+
+                            <div class="progress-bar"></div>
+
+                        </div>
+
+                        <small>
+                            72% dos medicamentos cadastrados
+                        </small>
+
+                    </div>
+
+
+                    <div class="dashboard-card">
+
+                        <div class="dashboard-row">
+
+                            <span>
+                                🔔 Alertas pendentes
+                            </span>
+
+                            <strong>
+                                04
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             RECURSOS
+        ========================== -->
+
+        <section id="recursos">
+
+            <div class="container">
+
+                <div class="section-title">
+
+                    <span>
+                        AlertaCerto para farmácias
+                    </span>
+
+                    <h2>
+                        Tudo em um só sistema
+                    </h2>
+
+                    <p>
+                        Uma plataforma pensada para facilitar o atendimento,
+                        a configuração dos dispositivos e o acompanhamento
+                        dos clientes.
+                    </p>
+
+                </div>
+
+
+                <div class="cards">
+
+
+                    <div class="card">
+
+                        <div class="card-icon">
+                            👤
+                        </div>
+
+                        <h3>
+                            Clientes
+                        </h3>
+
+                        <p>
+                            Cadastre clientes e mantenha as informações
+                            necessárias para configurar e acompanhar
+                            suas FarmaBoxes.
+                        </p>
+
+                    </div>
+
+
+                    <div class="card">
+
+                        <div class="card-icon">
+                            💊
+                        </div>
+
+                        <h3>
+                            Medicamentos
+                        </h3>
+
+                        <p>
+                            Organize medicamentos, horários e quantidades
+                            para facilitar o gerenciamento do tratamento.
+                        </p>
+
+                    </div>
+
+
+                    <div class="card">
+
+                        <div class="card-icon">
+                            🔔
+                        </div>
+
+                        <h3>
+                            Alertas
+                        </h3>
+
+                        <p>
+                            Visualize alertas de reposição, configurações
+                            pendentes e outras ocorrências importantes.
+                        </p>
+
+                    </div>
+
+
+                    <div class="card">
+
+                        <div class="card-icon">
+                            ▣
+                        </div>
+
+                        <h3>
+                            Dispositivos
+                        </h3>
+
+                        <p>
+                            Configure e acompanhe as FarmaBoxes
+                            vinculadas aos clientes.
+                        </p>
+
+                    </div>
+
+
+                    <div class="card">
+
+                        <div class="card-icon">
+                            📦
+                        </div>
+
+                        <h3>
+                            Reposição
+                        </h3>
+
+                        <p>
+                            Tenha uma visão organizada das necessidades
+                            de reposição dos medicamentos.
+                        </p>
+
+                    </div>
+
+
+                    <div class="card">
+
+                        <div class="card-icon">
+                            🔒
+                        </div>
+
+                        <h3>
+                            Segurança
+                        </h3>
+
+                        <p>
+                            Utilize autenticação e boas práticas de
+                            segurança para proteger os dados dos usuários.
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             DOWNLOAD
+        ========================== -->
+
+        <section id="download" class="download">
+
+            <div class="container download-content">
+
+                <div>
+
+                    <h2>
+                        Baixe o aplicativo
+                        AlertaCerto
+                    </h2>
+
+                    <p>
+                        Instale o aplicativo de gerenciamento e tenha
+                        acesso às ferramentas necessárias para administrar
+                        clientes, medicamentos e dispositivos FarmaBox.
+                    </p>
+
+
+                    <div class="buttons">
+
+                        <!--
+                            TROQUE ESTE LINK PELO LOCAL DO SEU APK
+                        -->
+
+                        <a
+                            href="downloads/FarmaBox-Farmacia.apk"
+                            download
+                            class="btn btn-green"
+                        >
+                            🤖 Baixar para Android
+                        </a>
+
+
+                        <!--
+                            TROQUE PELO LINK DO SEU SISTEMA
+                        -->
+
+                        <a
+                            href="https://seu-dominio.com/app"
+                            target="_blank"
+                            class="btn btn-outline"
+                        >
+                            🌐 Abrir versão Web
+                        </a>
+
+                    </div>
+
+
+                    <div class="small-text" style="color:#b8cdbb;">
+                        Aplicativo para farmácias parceiras.
+                    </div>
+
+                </div>
+
+
+                <div class="steps">
+
+                    <div class="step">
+
+                        <div class="step-number">
+                            1
+                        </div>
+
+                        <span>
+                            Baixe o aplicativo AlertaCerto.
+                        </span>
+
+                    </div>
+
+
+                    <div class="step">
+
+                        <div class="step-number">
+                            2
+                        </div>
+
+                        <span>
+                            Acesse a conta da sua farmácia.
+                        </span>
+
+                    </div>
+
+
+                    <div class="step">
+
+                        <div class="step-number">
+                            3
+                        </div>
+
+                        <span>
+                            Cadastre clientes e configure as FarmaBoxes.
+                        </span>
+
+                    </div>
+
+
+                    <div class="step">
+
+                        <div class="step-number">
+                            4
+                        </div>
+
+                        <span>
+                            Acompanhe alertas e reposições.
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             COMO FUNCIONA
+        ========================== -->
+
+        <section id="como-funciona" class="how">
+
+            <div class="container">
+
+                <div class="section-title">
+
+                    <span>
+                        Fluxo de atendimento
+                    </span>
+
+                    <h2>
+                        Como a farmácia utiliza o sistema?
+                    </h2>
+
+                    <p>
+                        O sistema conecta a farmácia ao cliente
+                        e ao dispositivo FarmaBox.
+                    </p>
+
+                </div>
+
+
+                <div class="steps-grid">
+
+
+                    <div class="step-card">
+
+                        <span>
+                            01 — CADASTRO
+                        </span>
+
+                        <h3>
+                            Cliente
+                        </h3>
+
+                        <p>
+                            A farmácia cadastra o cliente e
+                            suas informações necessárias.
+                        </p>
+
+                    </div>
+
+
+                    <div class="step-card">
+
+                        <span>
+                            02 — CONFIGURAÇÃO
+                        </span>
+
+                        <h3>
+                            Medicamentos
+                        </h3>
+
+                        <p>
+                            São cadastrados medicamentos,
+                            horários e quantidades.
+                        </p>
+
+                    </div>
+
+
+                    <div class="step-card">
+
+                        <span>
+                            03 — DISPOSITIVO
+                        </span>
+
+                        <h3>
+                            FarmaBox
+                        </h3>
+
+                        <p>
+                            A equipe configura o dispositivo
+                            e vincula ao cliente.
+                        </p>
+
+                    </div>
+
+
+                    <div class="step-card">
+
+                        <span>
+                            04 — ACOMPANHAMENTO
+                        </span>
+
+                        <h3>
+                            Suporte
+                        </h3>
+
+                        <p>
+                            A farmácia acompanha alertas
+                            e auxilia o cliente.
+                        </p>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             LOGIN
+        ========================== -->
+
+        <section id="acesso">
+
+            <div class="container">
+
+                <div class="login">
+
+                    <h2>
+                        Acesso da farmácia
+                    </h2>
+
+                    <p>
+                        Entre no sistema para gerenciar seus
+                        clientes e dispositivos.
+                    </p>
+
+
+                    <form onsubmit="entrar(event)">
+
+                        <div class="form-group">
+
+                            <label for="email">
+                                E-mail da farmácia
+                            </label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                placeholder="farmacia@email.com"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="senha">
+                                Senha
+                            </label>
+
+                            <input
+                                type="password"
+                                id="senha"
+                                placeholder="Digite sua senha"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="login-bottom">
+
+                            <a href="#" class="forgot">
+                                Esqueci minha senha
+                            </a>
+
+                            <button
+                                type="submit"
+                                class="btn btn-green"
+                            >
+                                Entrar no sistema
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         RODAPÉ
+    ========================== -->
+
+    <footer>
+
+        <div class="container footer-content">
+
+            <div class="logo">
+
+                <div class="logo-icon">
+                    ✚
+                </div>
+
+                Alerta<span>Certo</span>
+
+            </div>
+
+
+            <div class="footer-text">
+                Tecnologia, organização e tranquilidade todos os dias.
+            </div>
+
+
+            <div class="footer-text">
+                © 2026 AlertaCerto Shozz
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        function entrar(event) {
+
+            event.preventDefault();
+
+            alert(
+                "Área de acesso demonstrativa. " +
+                "Conecte este formulário ao sistema da farmácia."
+            );
+
+        }
+
+    </script>
+
 </body>
 </html>
