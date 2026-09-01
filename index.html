@@ -9,19 +9,28 @@
         content="SHOZZ Sistemas — softwares rápidos, simples e fáceis de usar para barbearias, salões, farmácias e pequenos negócios."
     >
 
-    <meta name="theme-color" content="#7A7D45">
+    <meta name="theme-color" content="#5C6B28">
 
     <title>SHOZZ | Sistemas e Softwares Rápidos e Fáceis de Usar</title>
 
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- Configuração do Tailwind -->
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
+                    colors: {
+                        brand: {
+                            bg: '#FFFDF5',
+                            cream: '#F4F0E4',
+                            yellow: '#E3C067',
+                            lightGreen: '#E1E5CD',
+                            olive: '#5C6B28',
+                            darkOlive: '#434F1C',
+                            textDark: '#111827'
+                        }
+                    },
                     fontFamily: {
                         sans: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']
                     }
@@ -30,86 +39,76 @@
         };
     </script>
 
-    <!-- Font Awesome -->
     <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     >
 
-    <!-- Pré-conexões -->
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
 </head>
 
 <body
-    class="bg-white text-slate-800 dark:bg-white dark:text-slate-100 font-sans antialiased transition-colors duration-300"
+    class="bg-brand-bg text-brand-textDark font-sans antialiased transition-colors duration-300 min-h-screen flex flex-col"
 >
 
-    <!-- =========================================================
-         HEADER
-    ========================================================== -->
     <header
-        class="fixed top-0 left-0 w-full z-50 bg-white/95 dark:bg-slate-950/95 backdrop-blur-md border-b border-[#E8E1D2] dark:border-slate-800 shadow-sm"
+        class="fixed top-0 left-0 w-full z-50 bg-brand-bg/90 backdrop-blur-md border-b border-brand-cream shadow-sm"
     >
         <div class="max-w-7xl mx-auto px-5 sm:px-6 h-20 flex items-center justify-between">
 
-            <!-- Logo -->
             <a
                 href="#inicio"
                 aria-label="SHOZZ - Página inicial"
-                class="text-2xl font-black tracking-wider text-slate-900 dark:text-white"
+                class="text-2xl font-black tracking-wider text-brand-textDark flex items-center gap-0.5"
             >
-                SHOZZ<span class="text-[#7A7D45]">.</span>
+                SHOZZ<span class="text-brand-yellow font-black text-3xl">.</span>
             </a>
 
-            <!-- Navegação desktop -->
             <nav
                 class="hidden md:flex items-center gap-8 text-sm font-semibold"
                 aria-label="Navegação principal"
             >
                 <a
                     href="#filosofia"
-                    class="hover:text-[#737842] dark:hover:text-[#85884F] transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7A7D45] rounded"
+                    class="text-brand-textDark hover:text-brand-olive transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-olive rounded"
                 >
                     Filosofia
                 </a>
 
                 <a
                     href="#softwares"
-                    class="hover:text-[#737842] dark:hover:text-[#85884F] transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7A7D45] rounded"
+                    class="text-brand-textDark hover:text-brand-olive transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-olive rounded"
                 >
                     Sistemas
                 </a>
 
                 <a
                     href="#contato"
-                    class="bg-[#7A7D45] text-slate-950 px-5 py-2.5 rounded-full font-bold hover:bg-[#85884F] transition shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-[#737842]"
+                    class="bg-brand-olive !text-white px-5 py-2.5 rounded-full font-bold hover:bg-brand-darkOlive transition shadow-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-olive"
                 >
                     Fale Conosco
                 </a>
             </nav>
 
-            <!-- Ações -->
             <div class="flex items-center gap-2">
 
-                <!-- Tema -->
                 <button
                     id="themeToggle"
                     type="button"
                     aria-label="Alternar tema"
-                    class="w-10 h-10 rounded-full flex items-center justify-center text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7A7D45]"
+                    class="w-10 h-10 rounded-full flex items-center justify-center text-brand-textDark hover:bg-brand-cream transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-olive"
                 >
-                    <i id="themeIcon" class="fa-solid fa-moon" aria-hidden="true"></i>
+                    <i id="themeIcon" class="fa-solid fa-gear" aria-hidden="true"></i>
                 </button>
 
-                <!-- Menu mobile -->
                 <button
                     id="mobileMenuButton"
                     type="button"
                     aria-label="Abrir menu"
                     aria-controls="mobileMenu"
                     aria-expanded="false"
-                    class="md:hidden w-10 h-10 rounded-full flex items-center justify-center text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7A7D45]"
+                    class="md:hidden w-10 h-10 rounded-full flex items-center justify-center text-brand-textDark hover:bg-brand-cream transition focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-olive"
                 >
                     <i id="mobileMenuIcon" class="fa-solid fa-bars" aria-hidden="true"></i>
                 </button>
@@ -117,10 +116,9 @@
             </div>
         </div>
 
-        <!-- Menu mobile -->
         <div
             id="mobileMenu"
-            class="hidden md:hidden border-t border-[#E8E1D2] dark:border-slate-800 bg-[#FAF7EF] dark:bg-slate-950"
+            class="hidden md:hidden border-t border-brand-cream bg-brand-bg shadow-lg"
         >
             <nav
                 class="max-w-7xl mx-auto px-6 py-5 flex flex-col gap-4"
@@ -128,21 +126,21 @@
             >
                 <a
                     href="#filosofia"
-                    class="mobile-link py-2 font-semibold hover:text-[#7A7D45] transition"
+                    class="mobile-link py-2 font-semibold text-brand-textDark hover:text-brand-olive transition"
                 >
                     Filosofia
                 </a>
 
                 <a
                     href="#softwares"
-                    class="mobile-link py-2 font-semibold hover:text-[#7A7D45] transition"
+                    class="mobile-link py-2 font-semibold text-brand-textDark hover:text-brand-olive transition"
                 >
                     Sistemas
                 </a>
 
                 <a
                     href="#contato"
-                    class="mobile-link bg-[#7A7D45] text-slate-950 px-5 py-3 rounded-xl font-bold text-center hover:bg-[#85884F] transition"
+                    class="mobile-link bg-brand-olive !text-white px-5 py-3 rounded-xl font-bold text-center hover:bg-brand-darkOlive transition"
                 >
                     Fale Conosco
                 </a>
@@ -151,51 +149,38 @@
     </header>
 
 
-    <main id="inicio">
+    <main id="inicio" class="flex-grow">
 
-        <!-- =====================================================
-             HERO
-        ====================================================== -->
         <section
-            class="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden border-b border-[#E8E1D2] dark:border-slate-900"
+            class="relative pt-32 pb-20 md:pt-48 md:pb-32 overflow-hidden border-b border-brand-cream"
         >
-
-            <!-- Background -->
-            <div
-                class="absolute inset-0 bg-white pointer-events-none"
-                aria-hidden="true"
-            ></div>
 
             <div class="max-w-4xl mx-auto px-6 relative z-10 text-center">
 
                 <span
-                    class="inline-block bg-[#7A7D45]/10 text-[#5F6338] dark:text-[#85884F] text-xs font-bold px-3 py-1.5 rounded-full mb-6 border border-[#7A7D45]/20"
+                    class="inline-block bg-brand-cream text-brand-olive text-xs font-bold px-4 py-1.5 rounded-full mb-6 border border-brand-cream shadow-xs"
                 >
                     Sistemas úteis para o seu negócio
                 </span>
 
                 <h1
-                    class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-6 text-slate-900 dark:text-white"
+                    class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-6 text-brand-textDark"
                 >
-                    
-                    <span class="text-[#737842] dark:text-[#7A7D45]">
-                         Tecnologia Prática e fácil para todos
-                    </span>
+                    Tecnologia prática e <span class="text-brand-olive">fácil para todos</span>
                 </h1>
 
                 <p
-                    class="text-slate-600 dark:text-slate-400 text-lg md:text-xl mb-10 leading-relaxed font-medium"
+                    class="text-gray-700 text-lg md:text-xl mb-10 leading-relaxed font-medium max-w-2xl mx-auto"
                 >
-                    Na SHOZZ, criamos softwares inteligentes, rápidos e focados
-                    no dia a dia. De barbearias a farmácias: sistemas feitos
-                    para simplificar sua rotina sem complicação.
+                    Na SHOZZ, criamos softwares inteligentes, rápidos e focados no dia a dia.
+                    De barbearias a farmácias: sistemas feitos para simplificar sua rotina sem complicação.
                 </p>
 
                 <div class="flex flex-col sm:flex-row justify-center gap-4">
 
                     <a
                         href="#softwares"
-                        class="bg-[#7A7D45] text-slate-950 font-bold px-8 py-4 rounded-xl hover:bg-[#85884F] transition flex items-center justify-center gap-2 shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[#737842]"
+                        class="bg-brand-olive !text-white font-bold px-8 py-4 rounded-xl hover:bg-brand-darkOlive transition flex items-center justify-center gap-2 shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-olive"
                     >
                         <i class="fa-solid fa-download" aria-hidden="true"></i>
                         Conhecer os sistemas
@@ -203,7 +188,7 @@
 
                     <a
                         href="#contato"
-                        class="bg-white dark:bg-slate-900 border border-[#D7D8B8] dark:border-slate-800 text-slate-900 dark:text-white font-bold px-8 py-4 rounded-xl hover:bg-white dark:hover:bg-slate-800 transition shadow-sm flex items-center justify-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7A7D45]"
+                        class="bg-brand-cream text-brand-olive font-bold px-8 py-4 rounded-xl hover:bg-brand-lightGreen transition shadow-xs flex items-center justify-center gap-2 focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-olive"
                     >
                         <i class="fa-solid fa-comments" aria-hidden="true"></i>
                         Entrar em contato
@@ -214,29 +199,22 @@
         </section>
 
 
-        <!-- =====================================================
-             FILOSOFIA
-        ====================================================== -->
         <section
             id="filosofia"
-            class="py-20 bg-[#FAF7EF] dark:bg-slate-950 border-b border-[#E8E1D2] dark:border-slate-900"
+            class="py-20 bg-brand-cream/40 border-b border-brand-cream"
         >
             <div class="max-w-7xl mx-auto px-6">
 
                 <div class="text-center max-w-2xl mx-auto mb-16">
 
                     <h2
-                        class="text-3xl md:text-4xl font-bold mb-4 text-slate-900 dark:text-white"
+                        class="text-3xl md:text-4xl font-bold mb-4 text-brand-textDark"
                     >
-                        O DNA da
-                        <span class="text-[#737842] dark:text-[#7A7D45]">
-                            SHOZZ
-                        </span>
+                        O DNA da <span class="text-brand-olive">SHOZZ</span>
                     </h2>
 
-                    <p class="text-slate-600 dark:text-slate-400 font-medium">
-                        Nossos valores definem a forma como desenvolvemos cada
-                        software para você.
+                    <p class="text-gray-700 font-medium">
+                        Nossos valores definem a forma como desenvolvemos cada software para você.
                     </p>
 
                 </div>
@@ -244,90 +222,82 @@
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
 
-                    <!-- S -->
                     <article
-                        class="bg-white dark:bg-slate-900/50 border border-[#E8E1D2] dark:border-slate-800 p-6 rounded-2xl hover:border-[#7A7D45]/50 hover:-translate-y-1 transition shadow-sm"
+                        class="bg-brand-bg border border-brand-cream p-6 rounded-2xl hover:border-brand-olive hover:-translate-y-1 transition shadow-xs"
                     >
                         <span
-                            class="text-4xl font-black text-[#737842] dark:text-[#7A7D45] block mb-3"
+                            class="text-4xl font-black text-brand-olive block mb-3"
                             aria-hidden="true"
                         >
                             S
                         </span>
 
-                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">
+                        <h3 class="text-lg font-bold text-brand-textDark mb-2">
                             Simplicidade
                         </h3>
 
-                        <p class="text-sm text-slate-600 dark:text-slate-400">
-                            Telas limpas e intuitivas para qualquer pessoa usar
-                            sem complicação.
+                        <p class="text-sm text-gray-600">
+                            Telas limpas e intuitivas para qualquer pessoa usar sem complicação.
                         </p>
                     </article>
 
 
-                    <!-- H -->
                     <article
-                        class="bg-white dark:bg-slate-900/50 border border-[#E8E1D2] dark:border-slate-800 p-6 rounded-2xl hover:border-[#7A7D45]/50 hover:-translate-y-1 transition shadow-sm"
+                        class="bg-brand-bg border border-brand-cream p-6 rounded-2xl hover:border-brand-olive hover:-translate-y-1 transition shadow-xs"
                     >
                         <span
-                            class="text-4xl font-black text-[#737842] dark:text-[#7A7D45] block mb-3"
+                            class="text-4xl font-black text-brand-olive block mb-3"
                             aria-hidden="true"
                         >
                             H
                         </span>
 
-                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">
+                        <h3 class="text-lg font-bold text-brand-textDark mb-2">
                             Honestidade
                         </h3>
 
-                        <p class="text-sm text-slate-600 dark:text-slate-400">
-                            Preços justos, comunicação transparente e sem
-                            custos escondidos.
+                        <p class="text-sm text-gray-600">
+                            Preços justos, comunicação transparente e sem custos escondidos.
                         </p>
                     </article>
 
 
-                    <!-- O -->
                     <article
-                        class="bg-white dark:bg-slate-900/50 border border-[#E8E1D2] dark:border-slate-800 p-6 rounded-2xl hover:border-[#7A7D45]/50 hover:-translate-y-1 transition shadow-sm"
+                        class="bg-brand-bg border border-brand-cream p-6 rounded-2xl hover:border-brand-olive hover:-translate-y-1 transition shadow-xs"
                     >
                         <span
-                            class="text-4xl font-black text-[#737842] dark:text-[#7A7D45] block mb-3"
+                            class="text-4xl font-black text-brand-olive block mb-3"
                             aria-hidden="true"
                         >
                             O
                         </span>
 
-                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">
+                        <h3 class="text-lg font-bold text-brand-textDark mb-2">
                             Objetividade
                         </h3>
 
-                        <p class="text-sm text-slate-600 dark:text-slate-400">
-                            O que você precisa em poucos cliques, direto ao
-                            ponto.
+                        <p class="text-sm text-gray-600">
+                            O que você precisa em poucos cliques, direto ao ponto.
                         </p>
                     </article>
 
 
-                    <!-- ZZ -->
                     <article
-                        class="bg-white dark:bg-slate-900/50 border border-[#E8E1D2] dark:border-slate-800 p-6 rounded-2xl hover:border-[#7A7D45]/50 hover:-translate-y-1 transition shadow-sm"
+                        class="bg-brand-bg border border-brand-cream p-6 rounded-2xl hover:border-brand-olive hover:-translate-y-1 transition shadow-xs"
                     >
                         <span
-                            class="text-4xl font-black text-[#737842] dark:text-[#7A7D45] block mb-3"
+                            class="text-4xl font-black text-brand-olive block mb-3"
                             aria-hidden="true"
                         >
                             ZZ
                         </span>
 
-                        <h3 class="text-lg font-bold text-slate-900 dark:text-white mb-2">
+                        <h3 class="text-lg font-bold text-brand-textDark mb-2">
                             Zero complicação
                         </h3>
 
-                        <p class="text-sm text-slate-600 dark:text-slate-400">
-                            Instalou, abriu e usou. Sem burocracia para o seu
-                            negócio.
+                        <p class="text-sm text-gray-600">
+                            Instalou, abriu e usou. Sem burocracia para o seu negócio.
                         </p>
                     </article>
 
@@ -336,9 +306,6 @@
         </section>
 
 
-        <!-- =====================================================
-             SOFTWARES
-        ====================================================== -->
         <section
             id="softwares"
             class="py-24"
@@ -348,14 +315,13 @@
                 <div class="text-center max-w-2xl mx-auto mb-16">
 
                     <h2
-                        class="text-3xl md:text-4xl font-bold mb-4 text-slate-900 dark:text-white"
+                        class="text-3xl md:text-4xl font-bold mb-4 text-brand-textDark"
                     >
                         Nossos Sistemas
                     </h2>
 
-                    <p class="text-slate-600 dark:text-slate-400 font-medium">
-                        Soluções desenvolvidas para tornar a gestão do seu
-                        negócio mais simples, rápida e eficiente.
+                    <p class="text-gray-700 font-medium">
+                        Soluções desenvolvidas para tornar a gestão do seu negócio mais simples, rápida e eficiente.
                     </p>
 
                 </div>
@@ -363,11 +329,8 @@
 
                 <div class="grid md:grid-cols-2 gap-8">
 
-                    <!-- =================================================
-                         BARBER
-                    ================================================== -->
                     <article
-                        class="bg-white dark:bg-slate-900 border border-[#E8E1D2] dark:border-slate-800 p-8 rounded-2xl flex flex-col justify-between hover:border-[#7A7D45]/50 hover:-translate-y-1 transition shadow-md"
+                        class="bg-brand-bg border border-brand-cream p-8 rounded-2xl flex flex-col justify-between hover:border-brand-olive hover:-translate-y-1 transition shadow-md"
                     >
 
                         <div>
@@ -375,43 +338,41 @@
                             <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
 
                                 <span
-                                    class="bg-[#7A7D45]/10 text-[#5F6338] dark:text-[#85884F] text-xs font-bold px-3 py-1.5 rounded"
+                                    class="bg-brand-lightGreen text-brand-olive text-xs font-bold px-3 py-1.5 rounded"
                                 >
                                     Barbearias e Salões
                                 </span>
 
-                                <span class="text-slate-500 text-sm font-medium">
+                                <span class="text-gray-500 text-sm font-medium">
                                     Windows / Web
                                 </span>
 
                             </div>
 
                             <div
-                                class="w-14 h-14 rounded-2xl bg-[#7A7D45]/10 text-[#7A7D45] flex items-center justify-center mb-5"
+                                class="w-14 h-14 rounded-2xl bg-brand-lightGreen text-brand-olive flex items-center justify-center mb-5"
                                 aria-hidden="true"
                             >
                                 <i class="fa-solid fa-scissors text-2xl"></i>
                             </div>
 
                             <h3
-                                class="text-2xl font-bold mb-3 text-slate-900 dark:text-white"
+                                class="text-2xl font-bold mb-3 text-brand-textDark"
                             >
                                 Shozz Barber & Gestão
                             </h3>
 
                             <p
-                                class="text-slate-600 dark:text-slate-400 mb-8 font-medium leading-relaxed"
+                                class="text-gray-600 mb-8 font-medium leading-relaxed"
                             >
-                                Controle de agenda, comissão de profissionais,
-                                cadastro de clientes e caixa diário de forma
-                                rápida, simples e visual.
+                                Controle de agenda, comissão de profissionais, cadastro de clientes e caixa diário de forma rápida, simples e visual.
                             </p>
 
                         </div>
 
                         <a
                             href="barber.html"
-                            class="w-full bg-slate-100 dark:bg-slate-800 hover:bg-[#7A7D45] hover:text-slate-950 font-bold py-3.5 rounded-xl transition text-center flex items-center justify-center gap-2 text-slate-900 dark:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7A7D45]"
+                            class="w-full bg-brand-cream hover:bg-brand-olive hover:!text-white font-bold py-3.5 rounded-xl transition text-center flex items-center justify-center gap-2 text-brand-textDark focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-olive"
                             aria-label="Conhecer o Shozz Barber e Gestão"
                         >
                             <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
@@ -421,11 +382,8 @@
                     </article>
 
 
-                    <!-- =================================================
-                         FARMBOX
-                    ================================================== -->
                     <article
-                        class="bg-white dark:bg-slate-900 border border-[#E8E1D2] dark:border-slate-800 p-8 rounded-2xl flex flex-col justify-between hover:border-[#7A7D45]/50 hover:-translate-y-1 transition shadow-md"
+                        class="bg-brand-bg border border-brand-cream p-8 rounded-2xl flex flex-col justify-between hover:border-brand-olive hover:-translate-y-1 transition shadow-md"
                     >
 
                         <div>
@@ -433,43 +391,41 @@
                             <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
 
                                 <span
-                                    class="bg-[#7A7D45]/10 text-[#5F6338] dark:text-[#85884F] text-xs font-bold px-3 py-1.5 rounded"
+                                    class="bg-brand-lightGreen text-brand-olive text-xs font-bold px-3 py-1.5 rounded"
                                 >
                                     Farmácias 
                                 </span>
 
-                                <span class="text-slate-500 text-sm font-medium">
+                                <span class="text-gray-500 text-sm font-medium">
                                     Windows / Web
                                 </span>
 
                             </div>
 
                             <div
-                                class="w-14 h-14 rounded-2xl bg-[#7A7D45]/10 text-[#7A7D45] flex items-center justify-center mb-5"
+                                class="w-14 h-14 rounded-2xl bg-brand-lightGreen text-brand-olive flex items-center justify-center mb-5"
                                 aria-hidden="true"
                             >
                                 <i class="fa-solid fa-cash-register text-2xl"></i>
                             </div>
 
                             <h3
-                                class="text-2xl font-bold mb-3 text-slate-900 dark:text-white"
+                                class="text-2xl font-bold mb-3 text-brand-textDark"
                             >
                                 FarmBox Caixa Inteligente
                             </h3>
 
                             <p
-                                class="text-slate-600 dark:text-slate-400 mb-8 font-medium leading-relaxed"
+                                class="text-gray-600 mb-8 font-medium leading-relaxed"
                             >
-                                Sistema de caixa desenvolvido para facilitar a
-                                gestão de farmácias e lojas. Simples, rápido e
-                                gratuito.
+                                Sistema de caixa desenvolvido para facilitar a gestão de farmácias e lojas. Simples, rápido e gratuito.
                             </p>
 
                         </div>
 
                         <a
                             href="alertacerto.html"
-                            class="w-full bg-slate-100 dark:bg-slate-800 hover:bg-[#7A7D45] hover:text-slate-950 font-bold py-3.5 rounded-xl transition text-center flex items-center justify-center gap-2 text-slate-900 dark:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7A7D45]"
+                            class="w-full bg-brand-cream hover:bg-brand-olive hover:!text-white font-bold py-3.5 rounded-xl transition text-center flex items-center justify-center gap-2 text-brand-textDark focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-olive"
                             aria-label="Conhecer o FarmBox Caixa Inteligente"
                         >
                             <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
@@ -483,45 +439,39 @@
         </section>
 
 
-        <!-- =====================================================
-             CONTATO
-        ====================================================== -->
         <section
             id="contato"
-            class="py-24 bg-white dark:bg-slate-900/40 border-t border-[#E8E1D2] dark:border-slate-900"
+            class="py-24 bg-brand-cream/30 border-t border-brand-cream"
         >
             <div class="max-w-3xl mx-auto px-6 text-center">
 
                 <span
-                    class="inline-block text-[#737842] dark:text-[#7A7D45] font-bold text-sm uppercase tracking-wider mb-4"
+                    class="inline-block text-brand-olive font-bold text-sm uppercase tracking-wider mb-4"
                 >
                     Fale com a SHOZZ
                 </span>
 
                 <h2
-                    class="text-3xl md:text-4xl font-bold mb-4 text-slate-900 dark:text-white"
+                    class="text-3xl md:text-4xl font-bold mb-4 text-brand-textDark"
                 >
                     Precisa de um sistema sob medida?
                 </h2>
 
                 <p
-                    class="text-slate-600 dark:text-slate-400 mb-10 font-medium leading-relaxed"
+                    class="text-gray-700 mb-10 font-medium leading-relaxed"
                 >
-                    Entre em contato conosco para tirar dúvidas, enviar
-                    feedback ou solicitar uma solução personalizada para o
-                    seu negócio.
+                    Entre em contato conosco para tirar dúvidas, enviar feedback ou solicitar uma solução personalizada para o seu negócio.
                 </p>
 
 
                 <div class="grid sm:grid-cols-2 gap-4">
 
-                    <!-- E-mail -->
                     <a
                         href="mailto:contato@shozz.com.br"
-                        class="bg-white dark:bg-slate-900 border border-[#D7D8B8] dark:border-slate-800 px-6 py-4 rounded-xl flex items-center justify-center gap-3 hover:border-[#7A7D45] hover:-translate-y-0.5 transition shadow-sm text-slate-900 dark:text-white font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7A7D45]"
+                        class="bg-brand-bg border border-brand-cream px-6 py-4 rounded-xl flex items-center justify-center gap-3 hover:border-brand-olive hover:-translate-y-0.5 transition shadow-xs text-brand-textDark font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-olive"
                     >
                         <i
-                            class="fa-solid fa-envelope text-[#7A7D45]"
+                            class="fa-solid fa-envelope text-brand-olive"
                             aria-hidden="true"
                         ></i>
 
@@ -531,16 +481,15 @@
                     </a>
 
 
-                    <!-- WhatsApp -->
                     <a
                         href="https://wa.me/5564992636299"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="bg-white dark:bg-slate-900 border border-[#D7D8B8] dark:border-slate-800 px-6 py-4 rounded-xl flex items-center justify-center gap-3 hover:border-[#7A7D45] hover:-translate-y-0.5 transition shadow-sm text-slate-900 dark:text-white font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-[#7A7D45]"
+                        class="bg-brand-bg border border-brand-cream px-6 py-4 rounded-xl flex items-center justify-center gap-3 hover:border-brand-olive hover:-translate-y-0.5 transition shadow-xs text-brand-textDark font-semibold focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-olive"
                         aria-label="Falar com a SHOZZ pelo WhatsApp"
                     >
                         <i
-                            class="fa-brands fa-whatsapp text-[#7A7D45] text-xl"
+                            class="fa-brands fa-whatsapp text-brand-olive text-xl"
                             aria-hidden="true"
                         ></i>
 
@@ -557,245 +506,59 @@
     </main>
 
 
-    <!-- =========================================================
-         FOOTER
-    ========================================================== -->
     <footer
-        class="py-10 border-t border-[#E8E1D2] dark:border-slate-900 text-center bg-[#FAF7EF] dark:bg-slate-950"
+        class="py-10 border-t border-brand-cream text-center bg-brand-cream/20"
     >
         <div class="max-w-7xl mx-auto px-6">
 
-            <div class="text-xl font-black tracking-wider text-slate-900 dark:text-white mb-3">
-                SHOZZ<span class="text-[#7A7D45]">.</span>
+            <div class="text-xl font-black tracking-wider text-brand-textDark mb-3">
+                SHOZZ<span class="text-brand-yellow font-black">.</span>
             </div>
 
-            <p class="text-sm text-slate-500 mb-2">
+            <p class="text-sm text-gray-500 mb-2">
                 Sistemas simples para negócios reais.
             </p>
 
-            <p class="text-sm text-slate-500">
-                &copy; <span id="currentYear">2026</span> SHOZZ Sistemas.
-                Todos os direitos reservados.
+            <p class="text-sm text-gray-500">
+                &copy; <span id="currentYear">2026</span> SHOZZ Sistemas. Todos os direitos reservados.
             </p>
 
         </div>
-<<<<<<< HEAD
-    </section>
-
-    <!-- VITRINE DE SOFTWARES (DOWNLOADS) -->
-    <section id="softwares" class="py-24 max-w-7xl mx-auto px-6">
-        <div class="text-center max-w-2xl mx-auto mb-16">
-            <h2 class="text-3xl font-bold mb-4 text-slate-900 dark:text-white">Nossos Sistemas</h2>
-            <p class="text-slate-600 dark:text-slate-400 font-medium">Baixe agora os softwares desenvolvidos para otimizar o seu comércio ou prestação de serviços.</p>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-8">
-            <!-- Software Card 1 -->
-            <div class="bg-white dark:bg-slate-900 border border-[#E8E1D2] dark:border-slate-800 p-8 rounded-2xl flex flex-col justify-between hover:border-[#7A7D45]/50 transition shadow-md">
-                <div>
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="bg-[#7A7D45]/10 text-[#5F6338] dark:text-[#85884F] text-xs font-bold px-3 py-1 rounded">Para Barbearias e Salões</span>
-                        <span class="text-slate-500 text-sm font-medium">Windows / Web</span>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-2 text-slate-900 dark:text-white">Shozz Barber & Gestão</h3>
-                    <p class="text-slate-600 dark:text-slate-400 mb-6 font-medium">Controle de agenda, comissão de profissionais, cadastro de clientes e caixa diário de forma super rápida e visual.</p>
-                </div>
-                <a href="#link-do-download-barber" class="w-full bg-slate-100 dark:bg-slate-800 hover:bg-[#7A7D45] hover:text-slate-950 font-bold py-3.5 rounded-xl transition text-center flex items-center justify-center gap-2 text-slate-900 dark:text-white">
-                    <i class="fa-solid fa-download"></i> Baixar
-                </a>
-            </div>
-
-            <!-- Software Card 2 -->
-            <div class="bg-white dark:bg-slate-900 border border-[#E8E1D2] dark:border-slate-800 p-8 rounded-2xl flex flex-col justify-between hover:border-[#7A7D45]/50 transition shadow-md">
-                <div>
-                    <div class="flex items-center justify-between mb-4">
-                        <span class="bg-[#7A7D45]/10 text-[#5F6338] dark:text-[#85884F] text-xs font-bold px-3 py-1 rounded">Para Farmácias</span>
-                        <span class="text-slate-500 text-sm font-medium">Windows / Web</span>
-                    </div>
-                    <h3 class="text-2xl font-bold mb-2 text-slate-900 dark:text-white">Shozz AlertaCerto
-                    <p class="text-slate-600 dark:text-slate-400 mb-6 font-medium">Sistema gerenciado pela a Farmácia, FarmBox Caixa Inteligente, Controle de Medicamentos</p>
-                </div>
-                <a href="#link-do-download-comercio" class="w-full bg-slate-100 dark:bg-slate-800 hover:bg-[#7A7D45] hover:text-slate-950 font-bold py-3.5 rounded-xl transition text-center flex items-center justify-center gap-2 text-slate-900 dark:text-white">
-                    <i class="fa-solid fa-download"></i> Baixar
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- CONTATO -->
-    <section id="contato" class="py-24 bg-white dark:bg-slate-900/40 border-t border-[#E8E1D2] dark:border-slate-900">
-        <div class="max-w-3xl mx-auto px-6 text-center">
-            <h2 class="text-3xl font-bold mb-4 text-slate-900 dark:text-white">Precisa de um sistema sob medida?</h2>
-            <p class="text-slate-600 dark:text-slate-400 mb-8 font-medium">Entre em contato conosco para tirar dúvidas, dar feedbacks ou solicitar uma solução personalizada para o seu negócio.</p>
-            
-            <div class="flex flex-col sm:flex-row justify-center gap-6">
-                <a href="mailto:contato@shozz.com.br" class="bg-[#FAF7EF] dark:bg-slate-900 border border-[#D7D8B8] dark:border-slate-800 px-6 py-4 rounded-xl flex items-center justify-center gap-3 hover:border-[#7A7D45] transition shadow-sm text-slate-900 dark:text-white font-semibold">
-                    <i class="fa-solid fa-envelope text-[#7A7D45]"></i> contato@shozz.com.br
-                </a>
-                <a href="https://wa.me/5564992636299" target="_blank" class="bg-[#FAF7EF] dark:bg-slate-900 border border-[#D7D8B8] dark:border-slate-800 px-6 py-4 rounded-xl flex items-center justify-center gap-3 hover:border-[#7A7D45] transition shadow-sm text-slate-900 dark:text-white font-semibold">
-                    <i class="fa-brands fa-whatsapp text-[#7A7D45]"></i> WhatsApp Comercial
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- RODAPÉ -->
-    <footer class="py-8 border-t border-[#E8E1D2] dark:border-slate-900 text-center text-sm text-slate-500 bg-[#FAF7EF] dark:bg-slate-950">
-        <p>&copy; 2026 SHOZZ Sistemas. Todos os direitos reservados.</p>
-=======
->>>>>>> f9a21da491a5dd598da7818e5c1e3602ad77dfb2
     </footer>
 
 
-    <!-- =========================================================
-         JAVASCRIPT
-    ========================================================== -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
 
-            /* =====================================================
-               TEMA
-            ====================================================== */
-
-            const themeToggle = document.getElementById('themeToggle');
-            const themeIcon = document.getElementById('themeIcon');
-
-            const savedTheme = localStorage.getItem('theme');
-
-            if (
-                savedTheme === 'dark' ||
-                (
-                    !savedTheme &&
-                    window.matchMedia('(prefers-color-scheme: dark)').matches
-                )
-            ) {
-                document.documentElement.classList.add('dark');
-            }
-
-            function updateThemeIcon() {
-                const isDark =
-                    document.documentElement.classList.contains('dark');
-
-                themeIcon.className = isDark
-                    ? 'fa-solid fa-sun'
-                    : 'fa-solid fa-moon';
-            }
-
-            updateThemeIcon();
-
-            themeToggle.addEventListener('click', () => {
-
-                const isDark =
-                    document.documentElement.classList.toggle('dark');
-
-                localStorage.setItem(
-                    'theme',
-                    isDark ? 'dark' : 'light'
-                );
-
-                updateThemeIcon();
-            });
-
-
-            /* =====================================================
-               MENU MOBILE
-            ====================================================== */
-
-            const mobileMenuButton =
-                document.getElementById('mobileMenuButton');
-
-            const mobileMenu =
-                document.getElementById('mobileMenu');
-
-            const mobileMenuIcon =
-                document.getElementById('mobileMenuIcon');
+            /* Menu Mobile */
+            const mobileMenuButton = document.getElementById('mobileMenuButton');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuIcon = document.getElementById('mobileMenuIcon');
 
             function closeMobileMenu() {
-
                 mobileMenu.classList.add('hidden');
-
-                mobileMenuButton.setAttribute(
-                    'aria-expanded',
-                    'false'
-                );
-
-                mobileMenuButton.setAttribute(
-                    'aria-label',
-                    'Abrir menu'
-                );
-
-                mobileMenuIcon.className =
-                    'fa-solid fa-bars';
+                mobileMenuButton.setAttribute('aria-expanded', 'false');
+                mobileMenuButton.setAttribute('aria-label', 'Abrir menu');
+                mobileMenuIcon.className = 'fa-solid fa-bars';
             }
 
             mobileMenuButton.addEventListener('click', () => {
-
-                const isOpen =
-                    !mobileMenu.classList.contains('hidden');
+                const isOpen = !mobileMenu.classList.contains('hidden');
 
                 if (isOpen) {
-
                     closeMobileMenu();
-
                 } else {
-
                     mobileMenu.classList.remove('hidden');
-
-                    mobileMenuButton.setAttribute(
-                        'aria-expanded',
-                        'true'
-                    );
-
-                    mobileMenuButton.setAttribute(
-                        'aria-label',
-                        'Fechar menu'
-                    );
-
-                    mobileMenuIcon.className =
-                        'fa-solid fa-xmark';
+                    mobileMenuButton.setAttribute('aria-expanded', 'true');
+                    mobileMenuButton.setAttribute('aria-label', 'Fechar menu');
+                    mobileMenuIcon.className = 'fa-solid fa-xmark';
                 }
             });
 
-
-            /* Fecha o menu ao clicar em um link */
-
-            document
-                .querySelectorAll('.mobile-link')
-                .forEach(link => {
-
-                    link.addEventListener(
-                        'click',
-                        closeMobileMenu
-                    );
-
-                });
-
-
-            /* =====================================================
-               ANO AUTOMÁTICO
-            ====================================================== */
-
-            const currentYear =
-                document.getElementById('currentYear');
-
-            currentYear.textContent =
-                new Date().getFullYear();
-
-
-            /* =====================================================
-               FECHAR MENU AO REDIMENSIONAR
-            ====================================================== */
-
-            window.addEventListener('resize', () => {
-
-                if (window.innerWidth >= 768) {
-                    closeMobileMenu();
-                }
-
+            document.querySelectorAll('.mobile-link').forEach(link => {
+                link.addEventListener('click', closeMobileMenu);
             });
-
         });
     </script>
-
 </body>
 </html>
