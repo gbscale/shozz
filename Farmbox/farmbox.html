@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>FarmaBoxes | AlertaCerto</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f9f3;
+            color: #1d2520;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* =========================
+           ESTRUTURA
+        ========================= */
+
+        .layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* =========================
+           MENU LATERAL
+        ========================= */
+
+        .sidebar {
+            width: 245px;
+            background: #ffffff;
+            border-right: 1px solid #d8e4d5;
+            padding: 25px 18px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 23px;
+            font-weight: bold;
+            padding: 0 10px;
+            margin-bottom: 40px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: #e8f4e6;
+            color: #5C6B28;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 23px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #5C6B28;
+        }
+
+        .menu-title {
+            color: #8a948d;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0 12px;
+            margin-bottom: 10px;
+        }
+
+        .menu {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .menu a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px;
+            border-radius: 9px;
+            color: #536058;
+            font-size: 14px;
+            font-weight: bold;
+            transition: 0.2s;
+        }
+
+        .menu a:hover {
+            background: #edf6eb;
+            color: #5C6B28;
+        }
+
+        .menu a.active {
+            background: #e8f4e6;
+            color: #5C6B28;
+        }
+
+        .menu-icon {
+            width: 22px;
+            text-align: center;
+            font-size: 17px;
+        }
+
+        /* =========================
+           CONTEÚDO
+        ========================= */
+
+        .main {
+            margin-left: 245px;
+            width: calc(100% - 245px);
+            min-height: 100vh;
+        }
+
+        /* =========================
+           TOPO
+        ========================= */
+
+        .topbar {
+            height: 75px;
+            background: #ffffff;
+            border-bottom: 1px solid #d8e4d5;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 35px;
+        }
+
+        .page-title h1 {
+            font-size: 22px;
+            margin-bottom: 3px;
+        }
+
+        .page-title p {
+            color: #748077;
+            font-size: 13px;
+        }
+
+        .user {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .notification {
+            width: 38px;
+            height: 38px;
+            border-radius: 9px;
+            background: #f5f9f3;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 18px;
+        }
+
+        .user-info {
+            text-align: right;
+        }
+
+        .user-info strong {
+            display: block;
+            font-size: 13px;
+        }
+
+        .user-info span {
+            color: #7b867e;
+            font-size: 11px;
+        }
+
+        .user-avatar {
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+
+            background: #5C6B28;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-weight: bold;
+        }
+
+        /* =========================
+           CONTEÚDO
+        ========================= */
+
+        .content {
+            padding: 35px;
+        }
+
+        .content-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 25px;
+        }
+
+        .content-header h2 {
+            font-size: 26px;
+            margin-bottom: 5px;
+        }
+
+        .content-header p {
+            color: #68736c;
+            font-size: 14px;
+        }
+
+        /* =========================
+           BOTÃO
+        ========================= */
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 12px 18px;
+            border-radius: 9px;
+
+            font-weight: bold;
+            font-size: 13px;
+
+            border: none;
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        .btn-green {
+            background: #5C6B28;
+            color: white;
+        }
+
+        .btn-green:hover {
+            background: #154d27;
+            transform: translateY(-2px);
+        }
+
+        /* =========================
+           RESUMO
+        ========================= */
+
+        .summary {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-bottom: 22px;
+        }
+
+        .summary-card {
+            background: white;
+            border: 1px solid #d8e4d5;
+            border-radius: 15px;
+            padding: 20px;
+        }
+
+        .summary-card span {
+            color: #748077;
+            font-size: 13px;
+        }
+
+        .summary-card strong {
+            display: block;
+            font-size: 28px;
+            margin-top: 8px;
+        }
+
+        /* =========================
+           TABELA
+        ========================= */
+
+        .table-container {
+            background: white;
+            border: 1px solid #d8e4d5;
+            border-radius: 15px;
+            padding: 20px;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            text-align: left;
+            color: #89928b;
+            font-size: 11px;
+            text-transform: uppercase;
+            padding: 12px 10px;
+            border-bottom: 1px solid #e1e9df;
+        }
+
+        td {
+            padding: 15px 10px;
+            font-size: 13px;
+            border-bottom: 1px solid #edf1eb;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* =========================
+           FARMA BOX
+        ========================= */
+
+        .box-code {
+            font-weight: bold;
+            color: #5C6B28;
+        }
+
+        .box-client {
+            font-weight: bold;
+        }
+
+        .box-client small {
+            display: block;
+            color: #89928b;
+            font-size: 11px;
+            margin-top: 3px;
+            font-weight: normal;
+        }
+
+        /* =========================
+           STATUS
+        ========================= */
+
+        .status {
+            display: inline-block;
+            padding: 5px 9px;
+            border-radius: 20px;
+
+            background: #e8f5e8;
+            color: #5C6B28;
+
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        .status.warning {
+            background: #fff5df;
+            color: #9a701b;
+        }
+
+        .status.offline {
+            background: #f5e8e8;
+            color: #a14a4a;
+        }
+
+        /* =========================
+           AÇÃO
+        ========================= */
+
+        .action {
+            color: #5C6B28;
+            font-weight: bold;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        /* =========================
+           RESPONSIVO
+        ========================= */
+
+        @media (max-width: 900px) {
+
+            .summary {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+        @media (max-width: 750px) {
+
+            .sidebar {
+                width: 70px;
+                padding: 20px 10px;
+            }
+
+            .logo {
+                justify-content: center;
+                padding: 0;
+            }
+
+            .logo > div:not(.logo-icon),
+            .menu-title,
+            .menu a span {
+                display: none;
+            }
+
+            .menu a {
+                justify-content: center;
+            }
+
+            .main {
+                margin-left: 70px;
+                width: calc(100% - 70px);
+            }
+
+            .topbar {
+                padding: 0 20px;
+            }
+
+            .user-info {
+                display: none;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .content-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <div class="layout">
+
+
+        <!-- =========================
+             MENU LATERAL
+        ========================== -->
+
+        <aside class="sidebar">
+
+            <div class="logo">
+
+                <div class="logo-icon">
+                    ✚
+                </div>
+
+                <div>
+                    Alerta<span>Certo</span>
+                </div>
+
+            </div>
+
+
+            <div class="menu-title">
+                Menu principal
+            </div>
+
+
+            <nav class="menu">
+
+                <a href="dashboard.html">
+                    <div class="menu-icon">🏠</div>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="clientes.html">
+                    <div class="menu-icon">👥</div>
+                    <span>Clientes</span>
+                </a>
+
+                <a href="farmabox.html" class="active">
+                    <div class="menu-icon">📦</div>
+                    <span>FarmaBoxes</span>
+                </a>
+
+                <a href="#">
+                    <div class="menu-icon">💊</div>
+                    <span>Medicamentos</span>
+                </a>
+
+                <a href="#">
+                    <div class="menu-icon">🔔</div>
+                    <span>Alertas</span>
+                </a>
+
+                <a href="#">
+                    <div class="menu-icon">📊</div>
+                    <span>Relatórios</span>
+                </a>
+
+            </nav>
+
+
+            <div class="menu-title" style="margin-top: 30px;">
+                Sistema
+            </div>
+
+
+            <nav class="menu">
+
+                <a href="#">
+                    <div class="menu-icon">⚙️</div>
+                    <span>Configurações</span>
+                </a>
+
+                <a href="#">
+                    <div class="menu-icon">🚪</div>
+                    <span>Sair</span>
+                </a>
+
+            </nav>
+
+        </aside>
+
+
+
+        <!-- =========================
+             CONTEÚDO PRINCIPAL
+        ========================== -->
+
+        <main class="main">
+
+
+            <!-- TOPO -->
+
+            <header class="topbar">
+
+                <div class="page-title">
+
+                    <h1>FarmaBoxes</h1>
+
+                    <p>
+                        Gerenciamento dos dispositivos da farmácia
+                    </p>
+
+                </div>
+
+
+                <div class="user">
+
+                    <div class="notification">
+                        🔔
+                    </div>
+
+                    <div class="user-info">
+
+                        <strong>
+                            Farmácia Parceira
+                        </strong>
+
+                        <span>
+                            Administrador
+                        </span>
+
+                    </div>
+
+                    <div class="user-avatar">
+                        FP
+                    </div>
+
+                </div>
+
+            </header>
+
+
+
+            <!-- CONTEÚDO -->
+
+            <section class="content">
+
+
+                <div class="content-header">
+
+                    <div>
+
+                        <h2>
+                            Dispositivos cadastrados
+                        </h2>
+
+                        <p>
+                            Acompanhe as FarmaBoxes vinculadas aos seus clientes.
+                        </p>
+
+                    </div>
+
+
+                    <button class="btn btn-green">
+                        + Nova FarmaBox
+                    </button>
+
+                </div>
+
+
+
+                <!-- RESUMO -->
+
+                <div class="summary">
+
+                    <div class="summary-card">
+
+                        <span>
+                            Total de FarmaBoxes
+                        </span>
+
+                        <strong>
+                            96
+                        </strong>
+
+                    </div>
+
+
+                    <div class="summary-card">
+
+                        <span>
+                            Conectadas
+                        </span>
+
+                        <strong>
+                            92
+                        </strong>
+
+                    </div>
+
+
+                    <div class="summary-card">
+
+                        <span>
+                            Precisam de atenção
+                        </span>
+
+                        <strong>
+                            04
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- TABELA -->
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Código
+                                </th>
+
+                                <th>
+                                    Cliente
+                                </th>
+
+                                <th>
+                                    Medicamentos
+                                </th>
+
+                                <th>
+                                    Última sincronização
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                                <th>
+                                    Ação
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+
+                            <tr>
+
+                                <td>
+                                    <span class="box-code">
+                                        FB-00096
+                                    </span>
+                                </td>
+
+                                <td>
+
+                                    <div class="box-client">
+
+                                        Maria Souza
+
+                                        <small>
+                                            Cliente desde 2026
+                                        </small>
+
+                                    </div>
+
+                                </td>
+
+                                <td>
+                                    3 medicamentos
+                                </td>
+
+                                <td>
+                                    Hoje, 18:42
+                                </td>
+
+                                <td>
+
+                                    <span class="status">
+                                        Conectada
+                                    </span>
+
+                                </td>
+
+                                <td>
+                                    <span class="action">
+                                        Ver detalhes
+                                    </span>
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    <span class="box-code">
+                                        FB-00082
+                                    </span>
+                                </td>
+
+                                <td>
+
+                                    <div class="box-client">
+
+                                        João Silva
+
+                                        <small>
+                                            Cliente desde 2026
+                                        </small>
+
+                                    </div>
+
+                                </td>
+
+                                <td>
+                                    2 medicamentos
+                                </td>
+
+                                <td>
+                                    Hoje, 17:30
+                                </td>
+
+                                <td>
+
+                                    <span class="status offline">
+                                        Desconectada
+                                    </span>
+
+                                </td>
+
+                                <td>
+                                    <span class="action">
+                                        Ver detalhes
+                                    </span>
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    <span class="box-code">
+                                        FB-00101
+                                    </span>
+                                </td>
+
+                                <td>
+
+                                    <div class="box-client">
+
+                                        Ana Oliveira
+
+                                        <small>
+                                            Cliente desde 2026
+                                        </small>
+
+                                    </div>
+
+                                </td>
+
+                                <td>
+                                    4 medicamentos
+                                </td>
+
+                                <td>
+                                    Hoje, 18:55
+                                </td>
+
+                                <td>
+
+                                    <span class="status">
+                                        Conectada
+                                    </span>
+
+                                </td>
+
+                                <td>
+                                    <span class="action">
+                                        Ver detalhes
+                                    </span>
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+                                    <span class="box-code">
+                                        FB-00105
+                                    </span>
+                                </td>
+
+                                <td>
+
+                                    <div class="box-client">
+
+                                        Carlos Santos
+
+                                        <small>
+                                            Cliente desde 2026
+                                        </small>
+
+                                    </div>
+
+                                </td>
+
+                                <td>
+                                    1 medicamento
+                                </td>
+
+                                <td>
+                                    Hoje, 16:20
+                                </td>
+
+                                <td>
+
+                                    <span class="status warning">
+                                        Atenção
+                                    </span>
+
+                                </td>
+
+                                <td>
+                                    <span class="action">
+                                        Ver detalhes
+                                    </span>
+
+                                </td>
+
+                            </tr>
+
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+</body>
+
+</html>

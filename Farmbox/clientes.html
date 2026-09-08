@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Clientes | AlertaCerto</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f9f3;
+            color: #1d2520;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        /* =========================
+           ESTRUTURA
+        ========================= */
+
+        .layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+
+        /* =========================
+           MENU LATERAL
+        ========================= */
+
+        .sidebar {
+            width: 245px;
+            background: #ffffff;
+            border-right: 1px solid #d8e4d5;
+            padding: 25px 18px;
+
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+        }
+
+
+        /* LOGO */
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            font-size: 23px;
+            font-weight: bold;
+
+            padding: 0 10px;
+            margin-bottom: 40px;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+
+            border-radius: 10px;
+
+            background: #e8f4e6;
+            color: #5C6B28;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 23px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #5C6B28;
+        }
+
+
+        /* MENU */
+
+        .menu-title {
+            color: #8a948d;
+            font-size: 11px;
+            font-weight: bold;
+
+            text-transform: uppercase;
+            letter-spacing: 1px;
+
+            padding: 0 12px;
+            margin-bottom: 10px;
+        }
+
+        .menu {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .menu a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            padding: 12px;
+
+            border-radius: 9px;
+
+            color: #536058;
+
+            font-size: 14px;
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+        .menu a:hover {
+            background: #edf6eb;
+            color: #5C6B28;
+        }
+
+        .menu a.active {
+            background: #e8f4e6;
+            color: #5C6B28;
+        }
+
+        .menu-icon {
+            width: 22px;
+            text-align: center;
+            font-size: 17px;
+        }
+
+
+        /* =========================
+           CONTEÚDO
+        ========================= */
+
+        .main {
+            margin-left: 245px;
+
+            width: calc(100% - 245px);
+
+            min-height: 100vh;
+        }
+
+
+        /* =========================
+           TOPO
+        ========================= */
+
+        .topbar {
+            height: 75px;
+
+            background: #ffffff;
+
+            border-bottom: 1px solid #d8e4d5;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 35px;
+        }
+
+        .page-title h1 {
+            font-size: 22px;
+            margin-bottom: 3px;
+        }
+
+        .page-title p {
+            color: #748077;
+            font-size: 13px;
+        }
+
+
+        /* USUÁRIO */
+
+        .user {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .notification {
+            width: 38px;
+            height: 38px;
+
+            border-radius: 9px;
+
+            background: #f5f9f3;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 18px;
+        }
+
+        .user-info {
+            text-align: right;
+        }
+
+        .user-info strong {
+            display: block;
+            font-size: 13px;
+        }
+
+        .user-info span {
+            color: #7b867e;
+            font-size: 11px;
+        }
+
+        .user-avatar {
+            width: 38px;
+            height: 38px;
+
+            border-radius: 50%;
+
+            background: #5C6B28;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-weight: bold;
+        }
+
+
+        /* =========================
+           CONTEÚDO
+        ========================= */
+
+        .content {
+            padding: 35px;
+        }
+
+        .content-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            margin-bottom: 25px;
+        }
+
+        .content-header h2 {
+            font-size: 26px;
+            margin-bottom: 5px;
+        }
+
+        .content-header p {
+            color: #68736c;
+            font-size: 14px;
+        }
+
+
+        /* BOTÃO */
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+
+            padding: 12px 18px;
+
+            border-radius: 9px;
+
+            font-weight: bold;
+            font-size: 13px;
+
+            border: none;
+
+            cursor: pointer;
+
+            transition: 0.2s;
+        }
+
+        .btn-green {
+            background: #5C6B28;
+            color: white;
+        }
+
+        .btn-green:hover {
+            background: #154d27;
+            transform: translateY(-2px);
+        }
+
+
+        /* =========================
+           BUSCA
+        ========================= */
+
+        .search-box {
+            background: white;
+
+            border: 1px solid #d8e4d5;
+
+            border-radius: 14px;
+
+            padding: 18px;
+
+            margin-bottom: 20px;
+        }
+
+        .search {
+            width: 100%;
+
+            padding: 13px 15px;
+
+            border: 1px solid #ccd8cb;
+
+            border-radius: 9px;
+
+            outline: none;
+
+            font-size: 14px;
+        }
+
+        .search:focus {
+            border-color: #5C6B28;
+
+            box-shadow: 0 0 0 3px #e4f1e2;
+        }
+
+
+        /* =========================
+           TABELA
+        ========================= */
+
+        .table-container {
+            background: white;
+
+            border: 1px solid #d8e4d5;
+
+            border-radius: 15px;
+
+            padding: 20px;
+
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+
+            border-collapse: collapse;
+        }
+
+        th {
+            text-align: left;
+
+            color: #89928b;
+
+            font-size: 11px;
+
+            text-transform: uppercase;
+
+            padding: 12px 10px;
+
+            border-bottom: 1px solid #e1e9df;
+        }
+
+        td {
+            padding: 15px 10px;
+
+            font-size: 13px;
+
+            border-bottom: 1px solid #edf1eb;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+
+        /* CLIENTE */
+
+        .client {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .client-avatar {
+            width: 35px;
+            height: 35px;
+
+            border-radius: 50%;
+
+            background: #e8f4e6;
+            color: #5C6B28;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+
+        /* STATUS */
+
+        .status {
+            display: inline-block;
+
+            padding: 5px 9px;
+
+            border-radius: 20px;
+
+            background: #e8f5e8;
+            color: #5C6B28;
+
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        .status.warning {
+            background: #fff5df;
+            color: #9a701b;
+        }
+
+
+        /* AÇÕES */
+
+        .action {
+            color: #5C6B28;
+
+            font-weight: bold;
+
+            font-size: 12px;
+
+            cursor: pointer;
+        }
+
+
+        /* =========================
+           RESPONSIVO
+        ========================= */
+
+        @media (max-width: 750px) {
+
+            .sidebar {
+                width: 70px;
+                padding: 20px 10px;
+            }
+
+            .logo {
+                justify-content: center;
+                padding: 0;
+            }
+
+            .logo > div:not(.logo-icon),
+            .menu-title,
+            .menu a span {
+                display: none;
+            }
+
+            .menu a {
+                justify-content: center;
+            }
+
+            .main {
+                margin-left: 70px;
+                width: calc(100% - 70px);
+            }
+
+            .topbar {
+                padding: 0 20px;
+            }
+
+            .user-info {
+                display: none;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .content-header {
+                align-items: flex-start;
+                gap: 15px;
+                flex-direction: column;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <div class="layout">
+
+
+        <!-- =========================
+             MENU
+        ========================== -->
+
+        <aside class="sidebar">
+
+
+            <div class="logo">
+
+                <div class="logo-icon">
+                    ✚
+                </div>
+
+                <div>
+                    Alerta<span>Certo</span>
+                </div>
+
+            </div>
+
+
+            <div class="menu-title">
+                Menu principal
+            </div>
+
+
+            <nav class="menu">
+
+                <a href="dashboard.html">
+                    <div class="menu-icon">🏠</div>
+                    <span>Dashboard</span>
+                </a>
+
+                <a href="clientes.html" class="active">
+                    <div class="menu-icon">👥</div>
+                    <span>Clientes</span>
+                </a>
+
+                <a href="#">
+                    <div class="menu-icon">📦</div>
+                    <span>FarmaBoxes</span>
+                </a>
+
+                <a href="#">
+                    <div class="menu-icon">💊</div>
+                    <span>Medicamentos</span>
+                </a>
+
+                <a href="#">
+                    <div class="menu-icon">🔔</div>
+                    <span>Alertas</span>
+                </a>
+
+                <a href="#">
+                    <div class="menu-icon">📊</div>
+                    <span>Relatórios</span>
+                </a>
+
+            </nav>
+
+
+            <div class="menu-title" style="margin-top: 30px;">
+                Sistema
+            </div>
+
+
+            <nav class="menu">
+
+                <a href="#">
+                    <div class="menu-icon">⚙️</div>
+                    <span>Configurações</span>
+                </a>
+
+                <a href="#">
+                    <div class="menu-icon">🚪</div>
+                    <span>Sair</span>
+                </a>
+
+            </nav>
+
+
+        </aside>
+
+
+
+        <!-- =========================
+             CONTEÚDO
+        ========================== -->
+
+        <main class="main">
+
+
+            <!-- TOPO -->
+
+            <header class="topbar">
+
+                <div class="page-title">
+
+                    <h1>Clientes</h1>
+
+                    <p>
+                        Gerenciamento dos clientes da farmácia
+                    </p>
+
+                </div>
+
+
+                <div class="user">
+
+                    <div class="notification">
+                        🔔
+                    </div>
+
+                    <div class="user-info">
+
+                        <strong>
+                            Farmácia Parceira
+                        </strong>
+
+                        <span>
+                            Administrador
+                        </span>
+
+                    </div>
+
+                    <div class="user-avatar">
+                        FP
+                    </div>
+
+                </div>
+
+            </header>
+
+
+
+            <!-- ÁREA -->
+
+            <section class="content">
+
+
+                <div class="content-header">
+
+                    <div>
+
+                        <h2>
+                            Clientes cadastrados
+                        </h2>
+
+                        <p>
+                            Consulte e gerencie os clientes vinculados às FarmaBoxes.
+                        </p>
+
+                    </div>
+
+
+                    <button class="btn btn-green">
+                        + Novo cliente
+                    </button>
+
+                </div>
+
+
+
+                <!-- BUSCA -->
+
+                <div class="search-box">
+
+                    <input
+                        type="text"
+                        class="search"
+                        placeholder="🔍  Buscar por nome, telefone ou código da FarmaBox..."
+                    >
+
+                </div>
+
+
+
+                <!-- TABELA -->
+
+                <div class="table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Cliente
+                                </th>
+
+                                <th>
+                                    Telefone
+                                </th>
+
+                                <th>
+                                    FarmaBox
+                                </th>
+
+                                <th>
+                                    Medicamentos
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                                <th>
+                                    Ação
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody>
+
+
+                            <tr>
+
+                                <td>
+
+                                    <div class="client">
+
+                                        <div class="client-avatar">
+                                            MS
+                                        </div>
+
+                                        <strong>
+                                            Maria Souza
+                                        </strong>
+
+                                    </div>
+
+                                </td>
+
+                                <td>
+                                    (11) 99999-1111
+                                </td>
+
+                                <td>
+                                    FB-00096
+                                </td>
+
+                                <td>
+                                    3 medicamentos
+                                </td>
+
+                                <td>
+                                    <span class="status">
+                                        Ativo
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <span class="action">
+                                        Ver detalhes
+                                    </span>
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+
+                                    <div class="client">
+
+                                        <div class="client-avatar">
+                                            JS
+                                        </div>
+
+                                        <strong>
+                                            João Silva
+                                        </strong>
+
+                                    </div>
+
+                                </td>
+
+                                <td>
+                                    (11) 98888-2222
+                                </td>
+
+                                <td>
+                                    FB-00082
+                                </td>
+
+                                <td>
+                                    2 medicamentos
+                                </td>
+
+                                <td>
+                                    <span class="status">
+                                        Ativo
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <span class="action">
+                                        Ver detalhes
+                                    </span>
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+
+                                    <div class="client">
+
+                                        <div class="client-avatar">
+                                            AO
+                                        </div>
+
+                                        <strong>
+                                            Ana Oliveira
+                                        </strong>
+
+                                    </div>
+
+                                </td>
+
+                                <td>
+                                    (11) 97777-3333
+                                </td>
+
+                                <td>
+                                    FB-00101
+                                </td>
+
+                                <td>
+                                    4 medicamentos
+                                </td>
+
+                                <td>
+                                    <span class="status">
+                                        Ativo
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <span class="action">
+                                        Ver detalhes
+                                    </span>
+                                </td>
+
+                            </tr>
+
+
+                            <tr>
+
+                                <td>
+
+                                    <div class="client">
+
+                                        <div class="client-avatar">
+                                            CS
+                                        </div>
+
+                                        <strong>
+                                            Carlos Santos
+                                        </strong>
+
+                                    </div>
+
+                                </td>
+
+                                <td>
+                                    (11) 96666-4444
+                                </td>
+
+                                <td>
+                                    FB-00105
+                                </td>
+
+                                <td>
+                                    1 medicamento
+                                </td>
+
+                                <td>
+                                    <span class="status warning">
+                                        Atenção
+                                    </span>
+                                </td>
+
+                                <td>
+                                    <span class="action">
+                                        Ver detalhes
+                                    </span>
+
+                                </td>
+
+                            </tr>
+
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+            </section>
+
+
+        </main>
+
+
+    </div>
+
+
+</body>
+
+</html>
