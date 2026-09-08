@@ -1183,7 +1183,7 @@
                     </p>
 
 
-                    <form action="Farmbox/dashboard.html">
+                    <form onsubmit="entrar(); return false;">
 
                         <div class="form-group">
 
@@ -1195,7 +1195,7 @@
                                 type="email"
                                 id="email"
                                 placeholder="farmacia@email.com"
-                                required
+                                
                             >
 
                         </div>
@@ -1211,7 +1211,7 @@
                                 type="password"
                                 id="senha"
                                 placeholder="Digite sua senha"
-                                required
+                                
                             >
 
                         </div>
@@ -1281,8 +1281,9 @@
     ========================== -->
 
     <script>
-
-
+   function entrar() {
+    window.location.href = "Farmbox/dashboard.html";
+}
 
     </script>
 
